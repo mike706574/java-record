@@ -151,40 +151,40 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public String getString(String key) {
         Object value = this.get(key);
-        if(value instanceof String) {
-            return (String)value;
+        if (value instanceof String) {
+            return (String) value;
         }
         throw new TypeMismatchException(key, value, "string", value.getClass().getName());
     }
 
     public Integer getInteger(String key) {
         Object value = this.get(key);
-        if(value instanceof Integer) {
-            return (Integer)value;
+        if (value instanceof Integer) {
+            return (Integer) value;
         }
         throw new TypeMismatchException(key, value, "integer", value.getClass().getName());
     }
 
     public Long getLong(String key) {
         Object value = this.get(key);
-        if(value instanceof  Long) {
-            return (Long)value;
+        if (value instanceof Long) {
+            return (Long) value;
         }
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
     }
 
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
-        if(value instanceof BigDecimal) {
-            return (BigDecimal)value;
+        if (value instanceof BigDecimal) {
+            return (BigDecimal) value;
         }
         throw new TypeMismatchException(key, value, "big decimal", value.getClass().getName());
     }
 
     public Date getDate(String key) {
         Object value = this.get(key);
-        if(value instanceof Date) {
-            return (Date)value;
+        if (value instanceof Date) {
+            return (Date) value;
         }
         throw new TypeMismatchException(key, value, "date", value.getClass().getName());
     }
@@ -196,7 +196,7 @@ public class Record extends LinkedHashMap<String, Object> {
     public Record dissoc(Collection<String> keys) {
         Record record = new Record();
         record.putAll(this);
-        for(String key : keys) {
+        for (String key : keys) {
             record.remove(key);
         }
         return record;
@@ -208,8 +208,8 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Record select(Collection<String> keys) {
         Record record = new Record();
-        for(String key : keys) {
-            if(containsKey(key)) {
+        for (String key : keys) {
+            if (containsKey(key)) {
                 record.put(key, get(key));
             }
         }
