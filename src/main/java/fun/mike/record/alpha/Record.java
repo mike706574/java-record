@@ -151,6 +151,9 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public String getString(String key) {
         Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
         if (value instanceof String) {
             return (String) value;
         }
@@ -159,6 +162,9 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Integer getInteger(String key) {
         Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
         if (value instanceof Integer) {
             return (Integer) value;
         }
@@ -167,6 +173,9 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Long getLong(String key) {
         Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
         if (value instanceof Long) {
             return (Long) value;
         }
@@ -175,6 +184,9 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
         if (value instanceof BigDecimal) {
             return (BigDecimal) value;
         }
@@ -183,6 +195,9 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Date getDate(String key) {
         Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
         if (value instanceof Date) {
             return (Date) value;
         }

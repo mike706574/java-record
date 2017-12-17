@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class RecordTest {
@@ -20,6 +21,12 @@ public class RecordTest {
     public void getString() {
         Record record = Record.of("foo", "bar");
         assertEquals("bar", record.getString("foo"));
+    }
+
+    @Test
+    public void getNullString() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getString("foo"));
     }
 
     @Test
@@ -37,6 +44,12 @@ public class RecordTest {
     }
 
     @Test
+    public void getNullLong() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getLong("foo"));
+    }
+
+    @Test
     public void getLongTypeMismatch() {
         thrown.expect(TypeMismatchException.class);
         thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a long.");
@@ -48,6 +61,12 @@ public class RecordTest {
     public void getInteger() {
         Record record = Record.of("foo", 1);
         assertEquals(new Integer(1), record.getInteger("foo"));
+    }
+
+    @Test
+    public void getNullInteger() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getInteger("foo"));
     }
 
     @Test
@@ -65,6 +84,12 @@ public class RecordTest {
     }
 
     @Test
+    public void getNullBigDecimal() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getBigDecimal("foo"));
+    }
+
+    @Test
     public void getBigDecimalTypeMismatch() {
         thrown.expect(TypeMismatchException.class);
         thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a big decimal.");
@@ -79,6 +104,12 @@ public class RecordTest {
 
         Record record = Record.of("foo", date);
         assertEquals(date, record.getDate("foo"));
+    }
+
+    @Test
+    public void getNullDate() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getDate("foo"));
     }
 
     @Test
