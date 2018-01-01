@@ -3,7 +3,10 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -75,6 +78,52 @@ public class RecordTest {
         thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be an integer.");
         Record record = Record.of("foo", "bar");
         record.getInteger("foo");
+    }
+
+    @Test
+    public void getList() {
+        Record record = Record.of("foo", Arrays.asList("bar", "baz"));
+        assertEquals(Arrays.asList("bar", "baz"), record.getList("foo"));
+    }
+
+    @Test
+    public void getNullList() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getList("foo"));
+    }
+
+    @Test
+    public void getListTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a list.");
+        Record record = Record.of("foo", "bar");
+        record.getList("foo");
+    }
+
+    @Test
+    public void getMap() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("bar", 1);
+        map.put("baz", 2);
+        Record record = Record.of("foo", map);
+        Map<String, Integer> expectedMap = new HashMap<>();
+        expectedMap.put("bar", 1);
+        expectedMap.put("baz", 2);
+        assertEquals(expectedMap, record.getMap("foo"));
+    }
+
+    @Test
+    public void getNullMap() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getMap("foo"));
+    }
+
+    @Test
+    public void getMapTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a map.");
+        Record record = Record.of("foo", "bar");
+        record.getMap("foo");
     }
 
     @Test

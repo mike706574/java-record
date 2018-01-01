@@ -152,7 +152,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public String getString(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof String) {
@@ -163,7 +163,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Integer getInteger(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof Integer) {
@@ -174,7 +174,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Long getLong(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof Long) {
@@ -185,7 +185,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public <T> List<T> getList(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof List) {
@@ -196,7 +196,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public <K, V> Map<K, V> getMap(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof Map) {
@@ -207,7 +207,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof BigDecimal) {
@@ -218,7 +218,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Date getDate(String key) {
         Object value = this.get(key);
-        if(value == null) {
+        if (value == null) {
             return null;
         }
         if (value instanceof Date) {
