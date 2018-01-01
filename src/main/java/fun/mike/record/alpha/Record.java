@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Record extends LinkedHashMap<String, Object> {
@@ -180,6 +181,28 @@ public class Record extends LinkedHashMap<String, Object> {
             return (Long) value;
         }
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
+    }
+
+    public <T> List<T> getList(String key) {
+        Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
+        if (value instanceof List) {
+            return (List<T>) value;
+        }
+        throw new TypeMismatchException(key, value, "list", value.getClass().getName());
+    }
+
+    public <K, V> Map<K, V> getMap(String key) {
+        Object value = this.get(key);
+        if(value == null) {
+            return null;
+        }
+        if (value instanceof Map) {
+            return (Map<K, V>) value;
+        }
+        throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
 
     public BigDecimal getBigDecimal(String key) {
