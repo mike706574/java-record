@@ -127,6 +127,46 @@ public class RecordTest {
     }
 
     @Test
+    public void getFloat() {
+        Record record = Record.of("foo", new Float(1));
+        assertEquals(new Float(1), record.getFloat("foo"));
+    }
+
+    @Test
+    public void getNullFloat() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getFloat("foo"));
+    }
+
+    @Test
+    public void getFloatTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a float.");
+        Record record = Record.of("foo", "bar");
+        record.getFloat("foo");
+    }
+
+    @Test
+    public void getDouble() {
+        Record record = Record.of("foo", new Double(1));
+        assertEquals(new Double(1), record.getDouble("foo"));
+    }
+
+    @Test
+    public void getNullDouble() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getDouble("foo"));
+    }
+
+    @Test
+    public void getDoubleTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a double.");
+        Record record = Record.of("foo", "bar");
+        record.getDouble("foo");
+    }
+
+    @Test
     public void getBigDecimal() {
         Record record = Record.of("foo", new BigDecimal(1));
         assertEquals(new BigDecimal(1), record.getBigDecimal("foo"));

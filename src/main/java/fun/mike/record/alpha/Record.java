@@ -205,6 +205,28 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
 
+    public Float getFloat(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Float) {
+            return (Float) value;
+        }
+        throw new TypeMismatchException(key, value, "float", value.getClass().getName());
+    }
+
+    public Double getDouble(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Double) {
+            return (Double) value;
+        }
+        throw new TypeMismatchException(key, value, "double", value.getClass().getName());
+    }
+
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
         if (value == null) {
