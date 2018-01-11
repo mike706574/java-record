@@ -15,7 +15,7 @@ public class TypeMismatchException extends RuntimeException {
 
     public String getMessage() {
         return String.format("Value \"%s\" of class \"%s\" for key \"%s\" must be %s %s.",
-                value, className, key, aOrAn(typeName), typeName);
+                             value, className, key, aOrAn(typeName), typeName);
     }
 
     private String aOrAn(String followingWord) {

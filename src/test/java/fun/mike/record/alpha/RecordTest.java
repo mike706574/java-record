@@ -208,7 +208,7 @@ public class RecordTest {
         assertEquals(0, record.size());
 
         Record newRecord = record.assoc("foo", "bar",
-                "baz", 1);
+                                        "baz", 1);
 
         assertEquals(0, record.size());
 
@@ -220,7 +220,7 @@ public class RecordTest {
     @Test
     public void dissoc() throws ParseException {
         Record record = Record.of("foo", "bar",
-                "baz", 1);
+                                  "baz", 1);
         assertEquals(2, record.size());
         assertEquals("bar", record.get("foo"));
         assertEquals(1, record.get("baz"));
@@ -237,8 +237,8 @@ public class RecordTest {
     @Test
     public void selectKeys() throws ParseException {
         Record record = Record.of("foo", "bar",
-                "baz", 1,
-                "bop", 2);
+                                  "baz", 1,
+                                  "bop", 2);
         assertEquals(3, record.size());
         assertEquals("bar", record.get("foo"));
         assertEquals(1, record.get("baz"));
