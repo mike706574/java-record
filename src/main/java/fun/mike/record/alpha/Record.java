@@ -644,7 +644,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k6, v6);
         record.put(k7, v7);
         record.put(k8, v8);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -683,7 +683,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k8, v8);
         record.put(k9, v9);
         record.put(k10, v10);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -705,7 +705,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k9, v9);
         record.put(k10, v10);
         record.put(k11, v11);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -728,7 +728,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k10, v10);
         record.put(k11, v11);
         record.put(k12, v12);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -753,7 +753,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k11, v11);
         record.put(k12, v12);
         record.put(k13, v13);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -779,7 +779,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k12, v12);
         record.put(k13, v13);
         record.put(k14, v14);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -807,7 +807,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k13, v13);
         record.put(k14, v14);
         record.put(k15, v15);
-        return this;
+        return record;
     }
 
 
@@ -837,7 +837,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k14, v14);
         record.put(k15, v15);
         record.put(k16, v16);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -868,7 +868,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k15, v15);
         record.put(k16, v16);
         record.put(k17, v17);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -900,7 +900,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k16, v16);
         record.put(k17, v17);
         record.put(k18, v18);
-        return this;
+        return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
@@ -935,7 +935,7 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k17, v17);
         record.put(k18, v18);
         record.put(k19, v19);
-        return this;
+        return record;
     }
 
 
@@ -971,6 +971,6 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k18, v18);
         record.put(k19, v19);
         record.put(k20, v20);
-        return this;
+        return record;
     }
 }
