@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class Record extends LinkedHashMap<String, Object> {
     public Record() {
@@ -432,6 +433,17 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof String) {
             return (String) value;
+        }
+        throw new TypeMismatchException(key, value, "string", value.getClass().getName());
+    }
+
+    public Optional<String> optionalString(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof String) {
+            return Optional.of((String) value);
         }
         throw new TypeMismatchException(key, value, "string", value.getClass().getName());
     }
