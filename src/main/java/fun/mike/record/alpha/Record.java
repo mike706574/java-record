@@ -459,6 +459,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "integer", value.getClass().getName());
     }
 
+    public Optional<Integer> optionalInteger(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Integer) {
+            return Optional.of((Integer) value);
+        }
+        throw new TypeMismatchException(key, value, "integer", value.getClass().getName());
+    }
+
     public Long getLong(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -466,6 +477,17 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof Long) {
             return (Long) value;
+        }
+        throw new TypeMismatchException(key, value, "long", value.getClass().getName());
+    }
+
+    public Optional<Long> optionalLong(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Long) {
+            return Optional.of((Long) value);
         }
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
     }
@@ -481,6 +503,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
 
+    public <T> Optional<List<T>> optionalList(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof List) {
+            return Optional.of((List<T>) value);
+        }
+        throw new TypeMismatchException(key, value, "list", value.getClass().getName());
+    }
+
     public <K, V> Map<K, V> getMap(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -492,6 +525,39 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
 
+    public <K, V> Optional<Map<K, V>> optionalMap(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Map) {
+            return Optional.of((Map<K, V>) value);
+        }
+        throw new TypeMismatchException(key, value, "map", value.getClass().getName());
+    }
+
+    public Record getRecord(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Record) {
+            return (Record) value;
+        }
+        throw new TypeMismatchException(key, value, "record", value.getClass().getName());
+    }
+
+    public Optional<Record> optionalRecord(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Record) {
+            return Optional.of((Record) value);
+        }
+        throw new TypeMismatchException(key, value, "record", value.getClass().getName());
+    }
+
     public Float getFloat(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -499,6 +565,17 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof Float) {
             return (Float) value;
+        }
+        throw new TypeMismatchException(key, value, "float", value.getClass().getName());
+    }
+
+    public Optional<Float> optionalFloat(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Float) {
+            return Optional.of((Float) value);
         }
         throw new TypeMismatchException(key, value, "float", value.getClass().getName());
     }
@@ -514,6 +591,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "double", value.getClass().getName());
     }
 
+    public Optional<Double> optionalDouble(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Double) {
+            return Optional.of((Double) value);
+        }
+        throw new TypeMismatchException(key, value, "double", value.getClass().getName());
+    }
+
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -525,6 +613,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "big decimal", value.getClass().getName());
     }
 
+    public Optional<BigDecimal> optionalBigDecimal(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof BigDecimal) {
+            return Optional.of((BigDecimal) value);
+        }
+        throw new TypeMismatchException(key, value, "big decimal", value.getClass().getName());
+    }
+
     public Date getDate(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -532,6 +631,17 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof Date) {
             return (Date) value;
+        }
+        throw new TypeMismatchException(key, value, "date", value.getClass().getName());
+    }
+
+    public Optional<Date> optionalDate(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Date) {
+            return Optional.of((Date) value);
         }
         throw new TypeMismatchException(key, value, "date", value.getClass().getName());
     }
