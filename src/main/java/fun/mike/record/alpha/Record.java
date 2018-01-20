@@ -492,13 +492,16 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
     }
 
+
     public <T> List<T> getList(String key) {
         Object value = this.get(key);
         if (value == null) {
             return null;
         }
         if (value instanceof List) {
-            return (List<T>) value;
+            @SuppressWarnings("unchecked")
+            List<T> result = (List<T>) value;
+            return result;
         }
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
@@ -509,7 +512,9 @@ public class Record extends LinkedHashMap<String, Object> {
             return Optional.empty();
         }
         if (value instanceof List) {
-            return Optional.of((List<T>) value);
+            @SuppressWarnings("unchecked")
+            Optional<List<T>> result = Optional.of((List<T>) value);
+            return result;
         }
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
@@ -520,7 +525,9 @@ public class Record extends LinkedHashMap<String, Object> {
             return null;
         }
         if (value instanceof Map) {
-            return (Map<K, V>) value;
+            @SuppressWarnings("unchecked")
+            Map<K, V> result = (Map<K, V>) value;
+            return result;
         }
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
@@ -531,7 +538,9 @@ public class Record extends LinkedHashMap<String, Object> {
             return Optional.empty();
         }
         if (value instanceof Map) {
-            return Optional.of((Map<K, V>) value);
+            @SuppressWarnings("unchecked")
+            Optional<Map<K, V>> result = Optional.of((Map<K, V>) value);
+            return result;
         }
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
