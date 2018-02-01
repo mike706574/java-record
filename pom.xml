@@ -72,7 +72,6 @@
         <version>2.20.1</version>
         <configuration>
           <trimStackTrace>false</trimStackTrace>
-          <workingDirectory>src/test/resources</workingDirectory>
         </configuration>
       </plugin>
       <plugin>
