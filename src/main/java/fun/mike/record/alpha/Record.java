@@ -448,6 +448,28 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "string", value.getClass().getName());
     }
 
+    public Boolean getBoolean(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Boolean) {
+            return (Boolean) value;
+        }
+        throw new TypeMismatchException(key, value, "boolean", value.getClass().getName());
+    }
+
+    public Optional<Boolean> optionalBoolean(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Boolean) {
+            return Optional.of((Boolean) value);
+        }
+        throw new TypeMismatchException(key, value, "boolean", value.getClass().getName());
+    }
+
     public Integer getInteger(String key) {
         Object value = this.get(key);
         if (value == null) {

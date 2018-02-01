@@ -14,7 +14,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 
 public class RecordTest {
@@ -59,6 +61,49 @@ public class RecordTest {
         thrown.expectMessage("Value \"1\" of class \"java.lang.Integer\" for key \"foo\" must be a string.");
         Record record = Record.of("foo", 1);
         record.optionalString("foo");
+    }
+
+    @Test
+    public void Boolean() {
+        Record record = Record.of("foo", true);
+        assertTrue(record.getBoolean("foo"));
+
+        Record record2 = Record.of("foo", false);
+        assertFalse(record2.getBoolean("foo"));
+    }
+
+    @Test
+    public void getNullBoolean() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getBoolean("foo"));
+    }
+
+    @Test
+    public void getBooleanTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a boolean.");
+        Record record = Record.of("foo", "bar");
+        record.getBoolean("foo");
+    }
+
+    @Test
+    public void optionalBoolean() {
+        Record record = Record.of("foo", true);
+        assertEquals(Optional.of(true), record.optionalBoolean("foo"));
+    }
+
+    @Test
+    public void optionalNullBoolean() {
+        Record record = Record.of("foo", null);
+        assertEquals(Optional.empty(), record.optionalBoolean("foo"));
+    }
+
+    @Test
+    public void optionalBooleanTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"1\" of class \"java.lang.Integer\" for key \"foo\" must be a boolean.");
+        Record record = Record.of("foo", 1);
+        record.optionalBoolean("foo");
     }
 
     @Test
