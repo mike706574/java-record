@@ -1126,4 +1126,406 @@ public class Record extends LinkedHashMap<String, Object> {
         record.put(k20, v20);
         return record;
     }
+
+    public Record set(String k1, Object v1) {
+        put(k1, v1);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        return this;
+    }
+
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15, String k16, Object v16) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        put(k16, v16);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15, String k16, Object v16,
+            String k17, Object v17) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        put(k16, v16);
+        put(k17, v17);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15, String k16, Object v16,
+            String k17, Object v17, String k18, Object v18) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        put(k16, v16);
+        put(k17, v17);
+        put(k18, v18);
+        return this;
+    }
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15, String k16, Object v16,
+            String k17, Object v17, String k18, Object v18,
+            String k19, Object v19
+    ) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        put(k16, v16);
+        put(k17, v17);
+        put(k18, v18);
+        put(k19, v19);
+        return this;
+    }
+
+
+    public Record set(String k1, Object v1, String k2, Object v2,
+            String k3, Object v3, String k4, Object v4,
+            String k5, Object v5, String k6, Object v6,
+            String k7, Object v7, String k8, Object v8,
+            String k9, Object v9, String k10, Object v10,
+            String k11, Object v11, String k12, Object v12,
+            String k13, Object v13, String k14, Object v14,
+            String k15, Object v15, String k16, Object v16,
+            String k17, Object v17, String k18, Object v18,
+            String k19, Object v19, String k20, Object v20) {
+        Record record = new Record();
+        put(k1, v1);
+        put(k2, v2);
+        put(k3, v3);
+        put(k4, v4);
+        put(k5, v5);
+        put(k6, v6);
+        put(k7, v7);
+        put(k8, v8);
+        put(k9, v9);
+        put(k10, v10);
+        put(k11, v11);
+        put(k12, v12);
+        put(k13, v13);
+        put(k14, v14);
+        put(k15, v15);
+        put(k16, v16);
+        put(k17, v17);
+        put(k18, v18);
+        put(k19, v19);
+        put(k20, v20);
+        return this;
+    }
 }
