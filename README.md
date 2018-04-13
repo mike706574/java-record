@@ -1,5 +1,7 @@
 # record
 
+![Maven Central](https://img.shields.io/maven-central/v/fun.mike/record-alpha.svg)
+
 A record class - it's a friendlier map.
 
 
