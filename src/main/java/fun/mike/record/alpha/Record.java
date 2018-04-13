@@ -1133,7 +1133,6 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     public Record set(String k1, Object v1, String k2, Object v2) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         return this;
@@ -1141,7 +1140,6 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Record set(String k1, Object v1, String k2, Object v2,
             String k3, Object v3) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1150,7 +1148,6 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Record set(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1161,7 +1158,6 @@ public class Record extends LinkedHashMap<String, Object> {
     public Record set(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1173,7 +1169,6 @@ public class Record extends LinkedHashMap<String, Object> {
     public Record set(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1187,7 +1182,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1202,7 +1196,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1219,7 +1212,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1237,7 +1229,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1257,7 +1248,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1278,7 +1268,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1301,7 +1290,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1325,7 +1313,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1351,7 +1338,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1379,7 +1365,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1408,7 +1393,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1438,7 +1422,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17, String k18, Object v18) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1471,7 +1454,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k17, Object v17, String k18, Object v18,
             String k19, Object v19
     ) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
@@ -1505,7 +1487,6 @@ public class Record extends LinkedHashMap<String, Object> {
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17, String k18, Object v18,
             String k19, Object v19, String k20, Object v20) {
-        Record record = new Record();
         put(k1, v1);
         put(k2, v2);
         put(k3, v3);
