@@ -1,6 +1,6 @@
 # record
 
-[![Maven Central](https://img.shields.io/maven-central/v/fun.mike/record-alpha.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22fun.mike%22%20AND%20a%3A%record-alpha%22)
+[![Maven Central](https://img.shields.io/maven-central/v/fun.mike/record-alpha.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22fun.mike%22%20AND%20a%3A%22record-alpha%22)
 
 A friendly heterogeneous map wrapper for Java.
 
