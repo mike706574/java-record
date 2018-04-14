@@ -7,17 +7,13 @@ A friendly heterogeneous map wrapper for Java.
 
 ## Examples
 
-Here are a few examples. Look at the tests if you want more.
-
-###
-
-Import it.
+Import it:
 
 ```java
 import fun.mike.record.alpha;
 ```
 
-Build a `Record`.
+Make a `Record`:
 
 ```java
 Record rec = Record.of("str", "bar",
@@ -29,7 +25,7 @@ Record rec = Record.of("str", "bar",
                        "map", new HashMap<>());
 ```
 
-Pull out values with casting.
+Pull out values without casting:
 
 ```java
 String str = rec.getString("str");
@@ -54,7 +50,7 @@ Map<String, String> = rec.getMap("map");
 // => {}
 ```
 
-Get `java.util.Optional`'s instead.
+Get `java.util.Optional`'s instead:
 
 ```java
 rec.optionalString("str").orElse("baz");
@@ -80,13 +76,19 @@ Object str = rec.get("wat");
 Which means they're mutable.
 
 ```java
-rec.put("str", "baz");
-// => {str=baz, integ=5, bigdec=1.0, boole=true, list=[foo, bar], map={}}
+Record rec = Record.of("a", 1, "b", 2, "c", 3);
+// => {a=1, b=2, c=3}
+
+rec.put("d", "3");
+// => {a=1, b=2, c=3, d=4}
+
+rec
+// => {a=1, b=2, c=3, d=4}
 ```
 
 But you can use `assoc`, `dissoc`, and `select` to avoid mutation:
 ```java
-Record orig = Record.of("a", 1, "b", 2, "c", 3);
+Record rec = Record.of("a", 1, "b", 2, "c", 3);
 // => {a=1, b=2, c=3}
 
 Record withD = rec.assoc("d", 4);
@@ -98,7 +100,7 @@ Record withoutA = rec.dissoc("b");
 Record aAndB = rec.select("a", "b");
 // => {a=1, b=2}
 
-orig
+rec
 // => {a=1, b=2, c=3}
 ```
 
