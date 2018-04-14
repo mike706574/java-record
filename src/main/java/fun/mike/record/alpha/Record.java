@@ -9,23 +9,48 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * A friendly heterogeneous map class.
+ */
 public class Record extends LinkedHashMap<String, Object> {
+    /**
+     * Creates an empty Record.
+     */
     public Record() {
         super();
     }
 
+    /**
+     * Creates a record from another Record.
+     * @param record A record
+     */
     public Record(Record record) {
         super(record);
     }
 
+    /**
+     * Creates a Record from a map.
+     * @param map A map
+     */
     public Record(Map<String, Object> map) {
         super(map);
     }
 
+    /**
+     * Returns an empty record.
+     * @return a empty record
+     */
     public static Record of() {
         return new Record();
     }
 
+    /**
+     * Returns a record containing the given keys and values. Takes an
+     * alternating sequence of keys and values.
+     * @param k1 A key
+     * @param v1 A value
+     * @return a record
+     */
     public static Record of(String k1, Object v1) {
         Record record = new Record();
         record.put(k1, v1);
@@ -426,6 +451,14 @@ public class Record extends LinkedHashMap<String, Object> {
         return record;
     }
 
+    /**
+     * Returns the string value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a string.
+     * @param key the key whose associated value is to be returned
+     * @return the string value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public String getString(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -437,6 +470,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "string", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the string value to which the specified
+     * key is mapped, or an empty Optional if this map contains no mapping for
+     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * is not a string.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the string value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<String> optionalString(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -448,6 +490,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "string", value.getClass().getName());
     }
 
+    /**
+     * Returns the boolean value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a boolean.
+     * @param key the key whose associated value is to be returned
+     * @return the boolean value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Boolean getBoolean(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -459,6 +509,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "boolean", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the boolean value to which the specified
+     * key is mapped, or an empty Optional if this map contains no mapping for
+     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * is not a boolean.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the boolean value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Boolean> optionalBoolean(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -470,6 +529,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "boolean", value.getClass().getName());
     }
 
+    /**
+     * Returns the integer value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not an integer.
+     * @param key the key whose associated value is to be returned
+     * @return the integer value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Integer getInteger(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -481,6 +548,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "integer", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the integer value to which the specified
+     * key is mapped, or an empty Optional if this map contains no mapping for
+     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * is not an integer.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the integer value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Integer> optionalInteger(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -492,6 +568,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "integer", value.getClass().getName());
     }
 
+    /**
+     * Returns the long value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not an long.
+     * @param key the key whose associated value is to be returned
+     * @return the long value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Long getLong(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -503,6 +587,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the long value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a long.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the long value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Long> optionalLong(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -515,6 +608,15 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
 
+    /**
+     * Returns the List value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a List.
+     * @param key the key whose associated value is to be returned
+     * @param <T> the list type
+     * @return the List value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public <T> List<T> getList(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -528,6 +630,16 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the List value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a List.
+     * @param key the key whose associated value is to be returned
+     * @param <T> the list type
+     * @return an Optional containing the List value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public <T> Optional<List<T>> optionalList(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -541,6 +653,16 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
 
+    /**
+     * Returns the Map value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a Map.
+     * @param key the key whose associated value is to be returned
+     * @param <K> the map's key type
+     * @param <V> the map's value type
+     * @return the Map value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public <K, V> Map<K, V> getMap(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -554,6 +676,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the Map value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * an Map.
+     * @param key the key whose associated value is to be returned
+     * @param <K> the map's key type
+     * @param <V> the map's value type
+     * @return an Optional containing the Map value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public <K, V> Optional<Map<K, V>> optionalMap(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -567,6 +700,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "map", value.getClass().getName());
     }
 
+    /**
+     * Returns the record value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a record.
+     * @param key the key whose associated value is to be returned
+     * @return the record value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Record getRecord(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -578,6 +719,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "record", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the record value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a record.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the record value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Record> optionalRecord(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -589,6 +739,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "record", value.getClass().getName());
     }
 
+    /**
+     * Returns the float value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a float.
+     * @param key the key whose associated value is to be returned
+     * @return the float value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Float getFloat(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -600,6 +758,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "float", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the float value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a float.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the float value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Float> optionalFloat(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -611,6 +778,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "float", value.getClass().getName());
     }
 
+    /**
+     * Returns the double value to which the specified key is mapped, or null
+     * if this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a double.
+     * @param key the key whose associated value is to be returned
+     * @return the double value to which the specified key is mapped, or null
+     *         if this map contains no mapping for the key
+     */
     public Double getDouble(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -622,6 +797,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "double", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the double value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a double.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the double value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Double> optionalDouble(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -633,6 +817,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "double", value.getClass().getName());
     }
 
+    /**
+     * Returns the BigDecimal value to which the specified key is mapped, or
+     * nullif this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a BigDecimal.
+     * @param key the key whose associated value is to be returned
+     * @return the BigDecimal value to which the specified key is mapped, or
+     *         null if this map contains no mapping for the key
+     */
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -644,6 +836,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "big decimal", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the BigDecimal value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a BigDecimal.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the BigDecimal value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<BigDecimal> optionalBigDecimal(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -655,6 +856,14 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "big decimal", value.getClass().getName());
     }
 
+    /**
+     * Returns the Date value to which the specified key is mapped, or
+     * nullif this map contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a Date.
+     * @param key the key whose associated value is to be returned
+     * @return the Date value to which the specified key is mapped, or null if
+     *         this map contains no mapping for the key
+     */
     public Date getDate(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -666,6 +875,15 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "date", value.getClass().getName());
     }
 
+    /**
+     * Returns an Optional containing the Date value to which the specified key
+     * is mapped, or an empty Optional if this map contains no mapping for the
+     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * a Date.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the Date value to which the specified
+     *         key is mapped, or null if this map contains no mapping for the key
+     */
     public Optional<Date> optionalDate(String key) {
         Object value = this.get(key);
         if (value == null) {
@@ -677,10 +895,20 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "date", value.getClass().getName());
     }
 
+    /**
+     * Returns a new Record without the given {@code keys}.
+     * @param keys The keys to remove
+     * @return a new Record without the given keys
+     */
     public Record dissoc(String... keys) {
         return dissoc(Arrays.asList(keys));
     }
 
+    /**
+     * Returns a new Record without the given {@code keys}.
+     * @param keys The keys to remove
+     * @return a new Record without the given keys
+     */
     public Record dissoc(Collection<String> keys) {
         Record record = new Record();
         record.putAll(this);
@@ -690,10 +918,20 @@ public class Record extends LinkedHashMap<String, Object> {
         return record;
     }
 
+    /**
+     * Returns a new Record with only the given {@code keys}.
+     * @param keys The keys to keep
+     * @return a new Record with only the given keys
+     */
     public Record select(String... keys) {
         return select(Arrays.asList(keys));
     }
 
+    /**
+     * Returns a new Record with only the given {@code keys}.
+     * @param keys The keys to keep
+     * @return a new Record with only the given keys
+     */
     public Record select(Collection<String> keys) {
         Record record = new Record();
         for (String key : keys) {
@@ -704,6 +942,12 @@ public class Record extends LinkedHashMap<String, Object> {
         return record;
     }
 
+    /**
+     * Returns a new Record with the given keys and values added.
+     * @param k1 A key
+     * @param v1 A value
+     * @return a new Record with the given keys and values added
+     */
     public Record assoc(String k1, Object v1) {
         Record record = new Record();
         record.putAll(this);
@@ -1127,6 +1371,12 @@ public class Record extends LinkedHashMap<String, Object> {
         return record;
     }
 
+    /**
+     * Returns a new Record with the given keys and values added.
+     * @param k1 A key
+     * @param v1 A value
+     * @return a new Record with the given keys and values added
+     */
     public Record set(String k1, Object v1) {
         put(k1, v1);
         return this;
