@@ -1,6 +1,8 @@
 # record
 
-A record class - it's a friendlier map.
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha)
+
+A friendly heterogeneous map wrapper for Java.
 
 
 ## Copyright and License
