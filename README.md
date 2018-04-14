@@ -4,6 +4,11 @@
 
 A friendly heterogeneous map wrapper for Java.
 
+[API Docs](http://javadoc.io/doc/fun.mike/record-alpha)
+
+## Build
+
+[![CircleCI](https://circleci.com/gh/mike706574/java-record.svg?style=svg)](https://circleci.com/gh/mike706574/java-record)
 
 ## Copyright and License
 
