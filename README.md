@@ -50,7 +50,7 @@ Map<String, String> = rec.getMap("map");
 // => {}
 ```
 
-Get `java.util.Optional`'s instead:
+Get `java.util.Optional`s instead:
 
 ```java
 rec.optionalString("str").orElse("baz");
@@ -86,7 +86,7 @@ Integer str = rec.getInteger("str");
 => fun.mike.record.alpha.TypeMismatchException: Value "foo" of class "java.lang.String" for key "str" must be an integer.
 ```
 
-`Record`'s extend `java.util.LinkedHashMap<String, Object>`:
+`Record`s extend `java.util.LinkedHashMap<String, Object>`:
 
 ```java
 Object str = rec.get("str");
