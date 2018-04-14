@@ -63,7 +63,7 @@ rec.optionalInteger("wat").orElseThrow(() => new RuntimeException("wat"));
 // => RuntimeException("wat")
 ```
 
-`Record`'s are just `java.util.LinkedHashMap<String, Object>`.
+`Record`'s extend `java.util.LinkedHashMap<String, Object>`:
 
 ```java
 Object str = rec.get("str");
@@ -73,7 +73,7 @@ Object str = rec.get("wat");
 // => null
 ```
 
-Which means they're mutable.
+So they're mutable:
 
 ```java
 Record rec = Record.of("a", 1, "b", 2, "c", 3);
@@ -87,6 +87,7 @@ rec
 ```
 
 But you can use `assoc`, `dissoc`, and `select` to avoid mutation:
+
 ```java
 Record rec = Record.of("a", 1, "b", 2, "c", 3);
 // => {a=1, b=2, c=3}
@@ -121,6 +122,19 @@ Record aAndB = rec.select("a", "b");
 
 rec
 // => {a=1, b=2, c=3}
+```
+
+Or use `set` to do a lot of mutation at once:
+
+```java
+Record rec = Record.of("a", 1, "b", 2, "c", 3);
+// => {a=1, b=2, c=3}
+
+rec.set("b", 3, "c", 4, "d", 5, "e", 6);
+// => {a=1, b=3, c=4, d=5, e=6}
+
+rec
+// => {a=1, b=3, c=4, d=5, e=6}
 ```
 
 ## Build
