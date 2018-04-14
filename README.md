@@ -3,7 +3,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha)
 [![Javadocs](https://www.javadoc.io/badge/fun.mike/record-alpha.svg)](https://www.javadoc.io/doc/fun.mike/record-alpha)
 
-A friendly heterogeneous map wrapper for Java.
+A friendly heterogeneous map class for Java.
 
 ## Examples
 
