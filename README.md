@@ -94,8 +94,8 @@ Record rec = Record.of("a", 1, "b", 2, "c", 3);
 Record withD = rec.assoc("d", 4);
 // => {a=1, b=2, c=3, d=4}
 
-Record withoutA = rec.dissoc("b");
-// => {a=1, c=3}
+Record withoutA = rec.dissoc("a");
+// => {b=2, c=3}
 
 Record aAndB = rec.select("a", "b");
 // => {a=1, b=2}
