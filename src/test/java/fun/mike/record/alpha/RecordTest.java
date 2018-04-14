@@ -3,7 +3,7 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -552,5 +552,36 @@ public class RecordTest {
         Record a = Record.of("foo", "bar");
         Record b = Record.of("foo", "bar");
         assertEquals(a, b);
+    }
+
+    @Test
+    public void wat() {
+        // Build a heterogeneous record
+        Record rec = Record.of("str", "foo",
+                               "integ", 5,
+                               "bigdec", new BigDecimal("1.0"),
+                               "boole", true,
+                               "list", Arrays.asList("foo", "bar"),
+                               "map", new HashMap<>());
+
+        // Get values without casts
+        String str = rec.getString("str"); // => "foo"
+        System.out.println(str);
+        Integer integ = rec.getInteger("integ"); // => 5
+        System.out.println(integ);
+        BigDecimal bigdec = rec.getBigDecimal("bigdec"); // => 1.0
+        System.out.println(bigdec);
+        Boolean boole = rec.getBoolean("boole"); // => true
+        System.out.println(boole);
+        List<String> list = rec.getList("list");
+        System.out.println(list);
+        Map<String, String> map = rec.getMap("map");
+        System.out.println(map);
+
+        System.out.println(rec);
+        // Or get an Optional
+//        Optional<String> str = rec.optionalString("str");
+
+
     }
 }
