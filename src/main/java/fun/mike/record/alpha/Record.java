@@ -458,6 +458,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the string value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a string
      */
     public String getString(String key) {
         Object value = this.get(key);
@@ -473,11 +475,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the string value to which the specified
      * key is mapped, or an empty Optional if this map contains no mapping for
-     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not a string.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the string value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a string
      */
     public Optional<String> optionalString(String key) {
         Object value = this.get(key);
@@ -497,6 +501,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the boolean value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a boolean
      */
     public Boolean getBoolean(String key) {
         Object value = this.get(key);
@@ -512,11 +518,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the boolean value to which the specified
      * key is mapped, or an empty Optional if this map contains no mapping for
-     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not a boolean.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the boolean value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a boolean
      */
     public Optional<Boolean> optionalBoolean(String key) {
         Object value = this.get(key);
@@ -536,6 +544,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the integer value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * an integer
      */
     public Integer getInteger(String key) {
         Object value = this.get(key);
@@ -551,11 +561,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the integer value to which the specified
      * key is mapped, or an empty Optional if this map contains no mapping for
-     * the key. Throws a TypeMismatchException if the value mapped to the key
+     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not an integer.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the integer value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * an integer
      */
     public Optional<Integer> optionalInteger(String key) {
         Object value = this.get(key);
@@ -575,6 +587,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the long value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a long
      */
     public Long getLong(String key) {
         Object value = this.get(key);
@@ -590,11 +604,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the long value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a long.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the long value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a long
      */
     public Optional<Long> optionalLong(String key) {
         Object value = this.get(key);
@@ -616,6 +632,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param <T> the list type
      * @return the List value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a list
      */
     public <T> List<T> getList(String key) {
         Object value = this.get(key);
@@ -633,12 +651,14 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the List value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a List.
      * @param key the key whose associated value is to be returned
      * @param <T> the list type
      * @return an Optional containing the List value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a list
      */
     public <T> Optional<List<T>> optionalList(String key) {
         Object value = this.get(key);
@@ -662,6 +682,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param <V> the map's value type
      * @return the Map value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a map
      */
     public <K, V> Map<K, V> getMap(String key) {
         Object value = this.get(key);
@@ -679,13 +701,15 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the Map value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * an Map.
      * @param key the key whose associated value is to be returned
      * @param <K> the map's key type
      * @param <V> the map's value type
      * @return an Optional containing the Map value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a map
      */
     public <K, V> Optional<Map<K, V>> optionalMap(String key) {
         Object value = this.get(key);
@@ -707,6 +731,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the record value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a record
      */
     public Record getRecord(String key) {
         Object value = this.get(key);
@@ -722,11 +748,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the record value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a record.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the record value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a record
      */
     public Optional<Record> optionalRecord(String key) {
         Object value = this.get(key);
@@ -746,6 +774,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the float value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a float
      */
     public Float getFloat(String key) {
         Object value = this.get(key);
@@ -761,11 +791,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the float value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a float.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the float value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a float
      */
     public Optional<Float> optionalFloat(String key) {
         Object value = this.get(key);
@@ -785,6 +817,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the double value to which the specified key is mapped, or null
      *         if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a double
      */
     public Double getDouble(String key) {
         Object value = this.get(key);
@@ -800,11 +834,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the double value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a double.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the double value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a double
      */
     public Optional<Double> optionalDouble(String key) {
         Object value = this.get(key);
@@ -824,6 +860,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the BigDecimal value to which the specified key is mapped, or
      *         null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a BigDecimal
      */
     public BigDecimal getBigDecimal(String key) {
         Object value = this.get(key);
@@ -839,11 +877,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the BigDecimal value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a BigDecimal.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the BigDecimal value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a BigDecimal
      */
     public Optional<BigDecimal> optionalBigDecimal(String key) {
         Object value = this.get(key);
@@ -863,6 +903,8 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param key the key whose associated value is to be returned
      * @return the Date value to which the specified key is mapped, or null if
      *         this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a Date
      */
     public Date getDate(String key) {
         Object value = this.get(key);
@@ -878,11 +920,13 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the Date value to which the specified key
      * is mapped, or an empty Optional if this map contains no mapping for the
-     * key. Throws a TypeMismatchException if the value mapped to the key is not
+     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a Date.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the Date value to which the specified
      *         key is mapped, or null if this map contains no mapping for the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a Date
      */
     public Optional<Date> optionalDate(String key) {
         Object value = this.get(key);
