@@ -60,7 +60,30 @@ rec.optionalString("wat").orElse("baz");
 // => "baz"
 
 rec.optionalInteger("wat").orElseThrow(() => new RuntimeException("wat"));
-// => RuntimeException("wat")
+// => RuntimeException: wat
+```
+
+Here are all the access methods available:
+
+| Class                | Value         | java.util.Optional |
+| -------------------- | ------------- | ------------------ |
+| java.lang.String     | getString     | optionalString     |
+| java.lang.Boolean    | getBoolean    | optionalBoolean    |
+| java.lang.Integer    | getInteger    | optionalInteger    |
+| java.lang.Long       | getLong       | optionalLong       |
+| java.lang.Float      | getFloat      | optionalFloat      |
+| java.lang.Double     | getDouble     | optionalDouble     |
+| java.math.BigDecimal | getBigDecimal | optionalBigDecimal |
+| java.util.Date       | getDate       | optionalDate       |
+| java.util.List       | getList       | optionalList       |
+| java.util.Map        | getMap        | optionalMap        |
+| fun.mike.Record      | getRecord     | getRecord          |
+
+A `fun.mike.record.alpha.TypeMismatchException` is thrown when the present value doesn't match the expected type:
+
+```java
+Integer str = rec.getInteger("str");
+=> fun.mike.record.alpha.TypeMismatchException: Value "foo" of class "java.lang.String" for key "str" must be an integer.
 ```
 
 `Record`'s extend `java.util.LinkedHashMap<String, Object>`:
