@@ -77,7 +77,7 @@ Here are all the access methods available:
 | java.util.Date       | getDate       | optionalDate       |
 | java.util.List       | getList       | optionalList       |
 | java.util.Map        | getMap        | optionalMap        |
-| fun.mike.Record      | getRecord     | getRecord          |
+| fun.mike.Record      | getRecord     | optionalRecord     |
 
 A `fun.mike.record.alpha.TypeMismatchException` is thrown when the present value doesn't match the expected type:
 
