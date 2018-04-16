@@ -553,4 +553,20 @@ public class RecordTest {
         Record b = Record.of("foo", "bar");
         assertEquals(a, b);
     }
+
+    @Test
+    public void updateString() {
+        Record pre = Record.of("foo", "bar");
+        Record post = pre.updateString("foo", v -> v.toUpperCase());
+        assertEquals(Record.of("foo", "bar"), pre);
+        assertEquals(Record.of("foo", "BAR"), post);
+    }
+
+    @Test
+    public void updateBigDecimal() {
+        Record pre = Record.of("foo", new BigDecimal("1.0"));
+        Record post = pre.updateBigDecimal("foo", n -> n.add(new BigDecimal("2.0")));
+        assertEquals(Record.of("foo", new BigDecimal("1.0")), pre);
+        assertEquals(Record.of("foo", new BigDecimal("3.0")), post);
+    }
 }

@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.UnaryOperator;
 
 /**
  * A friendly heterogeneous map class.
@@ -47,8 +48,8 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a record containing the given keys and values. Takes an
      * alternating sequence of keys and values.
-     * @param k1 A key
-     * @param v1 A value
+     * @param k1 a key
+     * @param v1 a value
      * @return a record
      */
     public static Record of(String k1, Object v1) {
@@ -988,8 +989,8 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns a new Record with the given keys and values added.
-     * @param k1 A key
-     * @param v1 A value
+     * @param k1 a key
+     * @param v1 a value
      * @return a new Record with the given keys and values added
      */
     public Record assoc(String k1, Object v1) {
@@ -1417,8 +1418,8 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns a new Record with the given keys and values added.
-     * @param k1 A key
-     * @param v1 A value
+     * @param k1 a key
+     * @param v1 a value
      * @return a new Record with the given keys and values added
      */
     public Record set(String k1, Object v1) {
@@ -1802,5 +1803,39 @@ public class Record extends LinkedHashMap<String, Object> {
         put(k19, v19);
         put(k20, v20);
         return this;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a string
+     */
+    public Record updateString(String key, UnaryOperator<String> update) {
+        Record newRecord = new Record(this);
+        String value = getString(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a BigDecimal
+     */
+    public Record updateBigDecimal(String key, UnaryOperator<BigDecimal> update) {
+        Record newRecord = new Record(this);
+        BigDecimal value = getBigDecimal(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
     }
 }
