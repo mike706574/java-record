@@ -682,4 +682,17 @@ public class RecordTest {
                                "bar", "2.0"),
                      post);
     }
+
+    @Test
+    public void code() {
+        Record rec = Record.of("str", "bar",
+                                   "integ", 5,
+                                   "bigdec", new BigDecimal("1.0"),
+                                   "boole", true,
+                                   "long", 5L,
+                                   "list", Arrays.asList("foo", "bar"),
+                                   "map", new HashMap<>());
+        assertEquals("Record.of(\"str\", \"bar\",\n\"integ\", new Integer(5),\n\"bigdec\", new BigDecimal(\"1.0\"),\n\"boole\", true,\n\"long\", new Long(5),\n\"list\", Arrays.asList(\"foo\", \"bar\"),\n\"map\", mapOf());",
+                     rec.code());
+    }
 }

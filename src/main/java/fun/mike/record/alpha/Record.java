@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 /**
  * A friendly heterogeneous map class.
@@ -1969,5 +1970,77 @@ public class Record extends LinkedHashMap<String, Object> {
         }
 
         return newRecord;
+    }
+
+    public void print() {
+        System.out.println(code());
+    }
+
+    public String code() {
+        String values = entrySet()
+            .stream()
+            .map(entry -> {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    return String.format("\"%s\", %s",
+                                         key,
+                                         code(value));
+                })
+            .collect(Collectors.joining(",\n"));
+
+        return String.format("Record.of(%s);",
+                             values);
+    }
+
+    private String code(Object value) {
+        if (value == null) {
+            return "null";
+        }
+        if (value instanceof String) {
+            return String.format("\"%s\"", value);
+        }
+        if (value instanceof BigDecimal) {
+            return String.format("new BigDecimal(\"%s\")", value);
+        }
+        if (value instanceof Integer) {
+            return String.format("new Integer(%s)", value);
+        }
+        if (value instanceof Long) {
+            return String.format("new Long(%s)", value);
+        }
+        if (value instanceof Boolean) {
+            return value.toString();
+        }
+        if (value instanceof List) {
+            String items = ((List<Object>)value)
+                .stream()
+                .map(item -> code(item))
+                .collect(Collectors.joining(", "));
+            return String.format("Arrays.asList(%s)",
+                                 items);
+        }
+        if (value instanceof Map) {
+            String values = ((Map<Object, Object>)value)
+                .entrySet()
+                .stream()
+                .map(entry -> {
+                        Object k = entry.getKey();
+                        Object v = entry.getValue();
+                        return String.format("%s, %s",
+                                             code(k),
+                                             code(v));
+                    })
+                .collect(Collectors.joining(", "));
+            return String.format("mapOf(%s)",
+                                 values);
+        }
+        if (value instanceof Record) {
+            return ((Record)value).code();
+        }
+        String message =
+            String.format("Value \"%s\" of unsupported class \"%s\".",
+                          value,
+                          value.getClass().getName());
+        throw new IllegalArgumentException(message);
     }
 }
