@@ -1840,6 +1840,7 @@ public class Record extends LinkedHashMap<String, Object> {
         return newRecord;
     }
 
+
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
@@ -1857,7 +1858,92 @@ public class Record extends LinkedHashMap<String, Object> {
         return newRecord;
     }
 
-    // TODO: Add updates for other types.
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * an integer
+     */
+    public <T> Record updateInteger(String key, Function<Integer, T> update) {
+        Record newRecord = new Record(this);
+        Integer value = getInteger(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a float
+     */
+    public <T> Record updateFloat(String key, Function<Float, T> update) {
+        Record newRecord = new Record(this);
+        Float value = getFloat(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a float
+     */
+    public <T> Record updateDouble(String key, Function<Double, T> update) {
+        Record newRecord = new Record(this);
+        Double value = getDouble(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a boolean
+     */
+    public <T> Record updateBoolean(String key, Function<Boolean, T> update) {
+        Record newRecord = new Record(this);
+        Boolean value = getBoolean(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a Record
+     */
+    public <T> Record updateRecord(String key, Function<Record, T> update) {
+        Record newRecord = new Record(this);
+        Record value = getRecord(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    // TODO: Add updates for List and Map?
 
     /**
      * Returns a new Record with the given mapping function applied to all
@@ -1872,6 +1958,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
         for(Map.Entry<String, Object> entry : entrySet()) {
             String key = entry.getKey();
+            @SuppressWarnings("unchecked")
             T value = (T) entry.getValue();
             if(type.isInstance(value)) {
                 newRecord.put(key, mapper.apply(value));

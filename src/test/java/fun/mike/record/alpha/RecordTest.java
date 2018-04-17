@@ -587,6 +587,90 @@ public class RecordTest {
     }
 
     @Test
+    public void updateInteger() {
+        Record pre = Record.of("foo", 1);
+        Record post = pre.updateInteger("foo", v -> v + 1);
+        assertEquals(Record.of("foo", 1), pre);
+        assertEquals(Record.of("foo", 2), post);
+    }
+
+    @Test
+    public void updateIntegerToNewType() {
+        Record pre = Record.of("foo", 1);
+        Record post = pre.updateInteger("foo", v -> v.toString());
+        assertEquals(Record.of("foo", 1), pre);
+        assertEquals(Record.of("foo", "1"), post);
+    }
+
+    @Test
+    public void updateFloat() {
+        Record pre = Record.of("foo", 1.0f);
+        Record post = pre.updateFloat("foo", v -> v + 1.0f);
+        assertEquals(Record.of("foo", 1.0f), pre);
+        assertEquals(Record.of("foo", 2.0f), post);
+    }
+
+    @Test
+    public void updateFloatToNewType() {
+        Record pre = Record.of("foo", 1.0f);
+        Record post = pre.updateFloat("foo", v -> v.toString());
+        assertEquals(Record.of("foo", 1.0f), pre);
+        assertEquals(Record.of("foo", "1.0"), post);
+    }
+
+    @Test
+    public void updateDouble() {
+        Record pre = Record.of("foo", 1.0);
+        Record post = pre.updateDouble("foo", v -> v + 1.0);
+        assertEquals(Record.of("foo", 1.0), pre);
+        assertEquals(Record.of("foo", 2.0), post);
+    }
+
+    @Test
+    public void updateDoubleToNewType() {
+        Record pre = Record.of("foo", 1.0);
+        Record post = pre.updateDouble("foo", v -> v.toString());
+        assertEquals(Record.of("foo", 1.0), pre);
+        assertEquals(Record.of("foo", "1.0"), post);
+    }
+
+    @Test
+    public void updateBoolean() {
+        Record pre = Record.of("foo", true);
+        Record post = pre.updateBoolean("foo", v -> !v);
+        assertEquals(Record.of("foo", true), pre);
+        assertEquals(Record.of("foo", false), post);
+    }
+
+    @Test
+    public void updateBooleanToNewType() {
+        Record pre = Record.of("foo", true);
+        Record post = pre.updateBoolean("foo", v -> v.toString());
+        assertEquals(Record.of("foo", true), pre);
+        assertEquals(Record.of("foo", "true"), post);
+    }
+
+    @Test
+    public void updateRecord() {
+        Record pre = Record.of("foo", Record.of("bar", 2));
+        Record post = pre.updateRecord("foo", v -> v.assoc("baz", 3));
+        assertEquals(Record.of("foo", Record.of("bar", 2)), pre);
+        assertEquals(Record.of("foo", Record.of("bar", 2,
+                                                "baz", 3)),
+                     post);
+    }
+
+    @Test
+    public void updateRecordToNewType() {
+        Record pre = Record.of("foo", Record.of("bar", 2));
+        Record post = pre.updateRecord("foo", v -> v.toString());
+        assertEquals(Record.of("foo", Record.of("bar", 2)),
+                     pre);
+        assertEquals(Record.of("foo", "{bar=2}"),
+                     post);
+    }
+
+    @Test
     public void mapValues() {
         Record pre = Record.of("foo", new BigDecimal("1.0"),
                                "bar", new BigDecimal("2.0"));
