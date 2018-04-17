@@ -3,7 +3,7 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -584,5 +584,18 @@ public class RecordTest {
         Record post = pre.updateBigDecimal("foo", BigDecimal::toString);
         assertEquals(Record.of("foo", new BigDecimal("1.0")), pre);
         assertEquals(Record.of("foo", "1.0"), post);
+    }
+
+    @Test
+    public void mapValues() {
+        Record pre = Record.of("foo", new BigDecimal("1.0"),
+                               "bar", new BigDecimal("2.0"));
+        Record post = pre.mapValues(BigDecimal.class, BigDecimal::toString);
+        assertEquals(Record.of("foo", new BigDecimal("1.0"),
+                               "bar", new BigDecimal("2.0")),
+                     pre);
+        assertEquals(Record.of("foo", "1.0",
+                               "bar", "2.0"),
+                     post);
     }
 }

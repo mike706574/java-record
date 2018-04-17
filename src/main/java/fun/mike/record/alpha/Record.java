@@ -1856,4 +1856,31 @@ public class Record extends LinkedHashMap<String, Object> {
         newRecord.put(key, update.apply(value));
         return newRecord;
     }
+
+    // TODO: Add updates for other types.
+
+    /**
+     * Returns a new Record with the given mapping function applied to all
+     * values of the given type.
+     * @param type The type of value to apply the mapping function to
+     * @param mapper A mapping function
+     * @return a new Record with the given mapping function applied to all
+     * values
+     */
+    public <T, U> Record mapValues(Class<T> type, Function<T, U> mapper) {
+        Record newRecord = new Record();
+
+        for(Map.Entry<String, Object> entry : entrySet()) {
+            String key = entry.getKey();
+            T value = (T) entry.getValue();
+            if(type.isInstance(value)) {
+                newRecord.put(key, mapper.apply(value));
+            }
+            else {
+                newRecord.put(key, value);
+            }
+        }
+
+        return newRecord;
+    }
 }
