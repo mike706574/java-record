@@ -2019,6 +2019,9 @@ public class Record extends LinkedHashMap<String, Object> {
             return String.format("Arrays.asList(%s)",
                                  items);
         }
+        if (value instanceof Record) {
+            return ((Record)value).code();
+        }
         if (value instanceof Map) {
             String values = ((Map<Object, Object>)value)
                 .entrySet()
@@ -2034,9 +2037,7 @@ public class Record extends LinkedHashMap<String, Object> {
             return String.format("mapOf(%s)",
                                  values);
         }
-        if (value instanceof Record) {
-            return ((Record)value).code();
-        }
+
         String message =
             String.format("Value \"%s\" of unsupported class \"%s\".",
                           value,
