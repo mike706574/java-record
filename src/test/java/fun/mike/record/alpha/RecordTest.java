@@ -563,10 +563,26 @@ public class RecordTest {
     }
 
     @Test
+    public void updateStringToNewType() {
+        Record pre = Record.of("foo", "1");
+        Record post = pre.updateString("foo", s -> new Boolean(s.equals("2")));
+        assertEquals(Record.of("foo", "1"), pre);
+        assertEquals(Record.of("foo", false), post);
+    }
+
+    @Test
     public void updateBigDecimal() {
         Record pre = Record.of("foo", new BigDecimal("1.0"));
         Record post = pre.updateBigDecimal("foo", n -> n.add(new BigDecimal("2.0")));
         assertEquals(Record.of("foo", new BigDecimal("1.0")), pre);
         assertEquals(Record.of("foo", new BigDecimal("3.0")), post);
+    }
+
+    @Test
+    public void updateBigDecimalToNewType() {
+        Record pre = Record.of("foo", new BigDecimal("1.0"));
+        Record post = pre.updateBigDecimal("foo", BigDecimal::toString);
+        assertEquals(Record.of("foo", new BigDecimal("1.0")), pre);
+        assertEquals(Record.of("foo", "1.0"), post);
     }
 }

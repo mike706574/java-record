@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
@@ -1815,7 +1816,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a string
      */
-    public Record updateString(String key, UnaryOperator<String> update) {
+    public <T> Record updateString(String key, Function<String, T> update) {
         Record newRecord = new Record(this);
         String value = getString(key);
         newRecord.put(key, update.apply(value));
@@ -1833,6 +1834,23 @@ public class Record extends LinkedHashMap<String, Object> {
      * a BigDecimal
      */
     public Record updateBigDecimal(String key, UnaryOperator<BigDecimal> update) {
+        Record newRecord = new Record(this);
+        BigDecimal value = getBigDecimal(key);
+        newRecord.put(key, update.apply(value));
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key.
+     * @param key a key
+     * @param update a function to apply to the current value mapped to key
+     * @return a new Record with the given key mapped to the result of applying
+     * the given function to the current value mapped to the key
+     * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
+     * a BigDecimal
+     */
+    public <T> Record updateBigDecimal(String key, Function<BigDecimal, T> update) {
         Record newRecord = new Record(this);
         BigDecimal value = getBigDecimal(key);
         newRecord.put(key, update.apply(value));
