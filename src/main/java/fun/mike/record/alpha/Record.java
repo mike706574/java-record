@@ -2022,6 +2022,10 @@ public class Record extends LinkedHashMap<String, Object> {
         if (value instanceof Record) {
             return ((Record)value).code();
         }
+        if (value instanceof Date) {
+            long time = ((Date)value).getTime();
+            return String.format("new Date(%dL)", time);
+        }
         if (value instanceof Map) {
             String values = ((Map<Object, Object>)value)
                 .entrySet()
