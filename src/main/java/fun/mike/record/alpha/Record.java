@@ -454,6 +454,16 @@ public class Record extends LinkedHashMap<String, Object> {
         return record;
     }
 
+    public static Record of(Object... kvs) {
+        Record record = new Record();
+        for(int i = 0; i < kvs.length; i += 2) {
+            String k = (String)kvs[i];
+            Object v = kvs[i + 1];
+            record.put(k, v);
+        }
+        return record;
+    }
+
     /**
      * Returns the string value to which the specified key is mapped, or null
      * if this map contains no mapping for the key. Throws a
