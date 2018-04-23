@@ -1,10 +1,10 @@
 package fun.mike.record.alpha;
 
 public class TypeMismatchException extends RuntimeException {
-    private String key;
-    private Object value;
-    private String typeName;
-    private String className;
+    private final String key;
+    private final Object value;
+    private final String typeName;
+    private final String className;
 
     public TypeMismatchException(String key, Object value, String typeName, String className) {
         this.key = key;

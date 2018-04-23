@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class RecordTest {
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void getString() {
@@ -129,7 +129,7 @@ public class RecordTest {
     @Test
     public void optionalLong() {
         Record record = Record.of("foo", 1L);
-        assertEquals(Optional.of(new Long(1L)), record.optionalLong("foo"));
+        assertEquals(Optional.of(1L), record.optionalLong("foo"));
     }
 
     @Test
@@ -169,7 +169,7 @@ public class RecordTest {
     @Test
     public void optionalInteger() {
         Record record = Record.of("foo", 1);
-        assertEquals(Optional.of(new Integer(1)), record.optionalInteger("foo"));
+        assertEquals(Optional.of(1), record.optionalInteger("foo"));
     }
 
     @Test
@@ -328,7 +328,7 @@ public class RecordTest {
 
     @Test
     public void getFloat() {
-        Record record = Record.of("foo", new Float(1));
+        Record record = Record.of("foo", 1f);
         assertEquals(new Float(1), record.getFloat("foo"));
     }
 
@@ -348,8 +348,8 @@ public class RecordTest {
 
     @Test
     public void optionalFloat() {
-        Record record = Record.of("foo", new Float(1));
-        assertEquals(Optional.of(new Float(1)), record.optionalFloat("foo"));
+        Record record = Record.of("foo", 1f);
+        assertEquals(Optional.of(1f), record.optionalFloat("foo"));
     }
 
     @Test
@@ -368,7 +368,7 @@ public class RecordTest {
 
     @Test
     public void getDouble() {
-        Record record = Record.of("foo", new Double(1));
+        Record record = Record.of("foo", 1d);
         assertEquals(new Double(1), record.getDouble("foo"));
     }
 
@@ -388,8 +388,8 @@ public class RecordTest {
 
     @Test
     public void optionalDouble() {
-        Record record = Record.of("foo", new Double(1));
-        assertEquals(Optional.of(new Double(1)), record.optionalDouble("foo"));
+        Record record = Record.of("foo", 1d);
+        assertEquals(Optional.of(1d), record.optionalDouble("foo"));
     }
 
     @Test
@@ -493,7 +493,7 @@ public class RecordTest {
     }
 
     @Test
-    public void assoc() throws ParseException {
+    public void assoc() {
         Record record = new Record();
 
         assertEquals(0, record.size());
@@ -509,7 +509,7 @@ public class RecordTest {
     }
 
     @Test
-    public void dissoc() throws ParseException {
+    public void dissoc() {
         Record record = Record.of("foo", "bar",
                                   "baz", 1);
         assertEquals(2, record.size());
@@ -526,7 +526,7 @@ public class RecordTest {
     }
 
     @Test
-    public void selectKeys() throws ParseException {
+    public void selectKeys() {
         Record record = Record.of("foo", "bar",
                                   "baz", 1,
                                   "bop", 2);
@@ -565,7 +565,7 @@ public class RecordTest {
     @Test
     public void updateStringToNewType() {
         Record pre = Record.of("foo", "1");
-        Record post = pre.updateString("foo", s -> new Boolean(s.equals("2")));
+        Record post = pre.updateString("foo", s -> (s.equals("2")));
         assertEquals(Record.of("foo", "1"), pre);
         assertEquals(Record.of("foo", false), post);
     }

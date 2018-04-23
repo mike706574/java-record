@@ -2012,9 +2012,10 @@ public class Record extends LinkedHashMap<String, Object> {
             return value.toString();
         }
         if (value instanceof List) {
+            @SuppressWarnings("unchecked")
             String items = ((List<Object>)value)
                 .stream()
-                .map(item -> code(item))
+                .map(this::code)
                 .collect(Collectors.joining(", "));
             return String.format("Arrays.asList(%s)",
                                  items);
@@ -2027,6 +2028,7 @@ public class Record extends LinkedHashMap<String, Object> {
             return String.format("new Date(%dL)", time);
         }
         if (value instanceof Map) {
+            @SuppressWarnings("unchecked")
             String values = ((Map<Object, Object>)value)
                 .entrySet()
                 .stream()
