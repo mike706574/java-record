@@ -1000,6 +1000,49 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     /**
+     * Returns a new Record with only the keys from {@code keyPairs} renamed to
+     * the values from {@code keyPairs}.
+     * @param keyPairs a map from the keys to select to the names each should be
+     * renamed to
+     * @return a new Record with only the given keys with only the keys from {@code keyPairs} renamed to
+     * the corresponding values from {@code keyPairs}
+     */
+    public Record selectAndRename(Map<String, String> keyPairs) {
+        Record newRecord = new Record();
+        for (Map.Entry<String, String> entry : keyPairs.entrySet()) {
+            String fromKey = entry.getKey();
+            String toKey = entry.getValue();
+            if (containsKey(fromKey)) {
+                Object value = get(fromKey);
+                newRecord.put(toKey, value);
+            }
+        }
+        return newRecord;
+    }
+
+
+    /**
+     * Returns a new Record with only the keys from {@code keyPairs} renamed to
+     * the values from {@code keyPairs}.
+     * @param keyPairs a map from the keys to select to the names each should be
+     * renamed to
+     * @return a new Record with only the given keys with only the keys from {@code keyPairs} renamed to
+     * the corresponding values from {@code keyPairs}
+     */
+    public Record selectAndRename(String... keyPairs) {
+        Record newRecord = new Record();
+        for(int i = 0; i < keyPairs.length; i += 2) {
+            String fromKey = keyPairs[i];
+            String toKey = keyPairs[i + 1];
+            if (containsKey(fromKey)) {
+                Object value = get(fromKey);
+                newRecord.put(toKey, value);
+            }
+        }
+        return newRecord;
+    }
+
+    /**
      * Returns a new Record with the given keys and values added.
      * @param k1 a key
      * @param v1 a value

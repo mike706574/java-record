@@ -548,6 +548,55 @@ public class RecordTest {
     }
 
     @Test
+    public void selectAndRename() {
+        Record record = Record.of("foo", "bar",
+                                  "baz", 1,
+                                  "bop", 2);
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        Record newRecord = record.selectAndRename("foo", "foot",
+                                                  "baz", "bazy");
+
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        assertEquals(2, newRecord.size());
+        assertEquals("bar", newRecord.get("foot"));
+        assertEquals(1, newRecord.get("bazy"));
+    }
+
+    @Test
+    public void selectAndRenameWithMap() {
+        Record record = Record.of("foo", "bar",
+                                  "baz", 1,
+                                  "bop", 2);
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        Map<String, String> keyPairs = new HashMap<>();
+        keyPairs.put("foo", "foot");
+        keyPairs.put("baz", "bazy");
+
+        Record newRecord = record.selectAndRename(keyPairs);
+
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        assertEquals(2, newRecord.size());
+        assertEquals("bar", newRecord.get("foot"));
+        assertEquals(1, newRecord.get("bazy"));
+    }
+
+    @Test
     public void equalitySanityTest() {
         Record a = Record.of("foo", "bar");
         Record b = Record.of("foo", "bar");

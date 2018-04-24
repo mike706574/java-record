@@ -109,7 +109,7 @@ rec
 // => {a=1, b=2, c=3, d=4}
 ```
 
-But you can use `assoc`, `dissoc`, and `select` to avoid mutation:
+But you can use `assoc`, `dissoc`, `select`, and `selectAndRename` to avoid mutation:
 
 ```java
 Record rec = Record.of("a", 1, "b", 2, "c", 3);
@@ -123,6 +123,9 @@ Record withoutA = rec.dissoc("a");
 
 Record aAndB = rec.select("a", "b");
 // => {a=1, b=2}
+
+Record aAndB = rec.selectAndRename("a", "z");
+// => {z=1}
 
 rec
 // => {a=1, b=2, c=3}
