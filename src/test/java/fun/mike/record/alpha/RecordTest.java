@@ -3,6 +3,7 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -657,7 +658,7 @@ public class RecordTest {
     @Test
     public void updateString() {
         Record pre = Record.of("foo", "bar");
-        Record post = pre.updateString("foo", v -> v.toUpperCase());
+        Record post = pre.updateString("foo", String::toUpperCase);
         assertEquals(Record.of("foo", "bar"), pre);
         assertEquals(Record.of("foo", "BAR"), post);
     }
@@ -697,7 +698,7 @@ public class RecordTest {
     @Test
     public void updateIntegerToNewType() {
         Record pre = Record.of("foo", 1);
-        Record post = pre.updateInteger("foo", v -> v.toString());
+        Record post = pre.updateInteger("foo", Object::toString);
         assertEquals(Record.of("foo", 1), pre);
         assertEquals(Record.of("foo", "1"), post);
     }
@@ -713,7 +714,7 @@ public class RecordTest {
     @Test
     public void updateFloatToNewType() {
         Record pre = Record.of("foo", 1.0f);
-        Record post = pre.updateFloat("foo", v -> v.toString());
+        Record post = pre.updateFloat("foo", Object::toString);
         assertEquals(Record.of("foo", 1.0f), pre);
         assertEquals(Record.of("foo", "1.0"), post);
     }
@@ -729,7 +730,7 @@ public class RecordTest {
     @Test
     public void updateDoubleToNewType() {
         Record pre = Record.of("foo", 1.0);
-        Record post = pre.updateDouble("foo", v -> v.toString());
+        Record post = pre.updateDouble("foo", Object::toString);
         assertEquals(Record.of("foo", 1.0), pre);
         assertEquals(Record.of("foo", "1.0"), post);
     }
@@ -745,7 +746,7 @@ public class RecordTest {
     @Test
     public void updateBooleanToNewType() {
         Record pre = Record.of("foo", true);
-        Record post = pre.updateBoolean("foo", v -> v.toString());
+        Record post = pre.updateBoolean("foo", Object::toString);
         assertEquals(Record.of("foo", true), pre);
         assertEquals(Record.of("foo", "true"), post);
     }
@@ -763,7 +764,7 @@ public class RecordTest {
     @Test
     public void updateRecordToNewType() {
         Record pre = Record.of("foo", Record.of("bar", 2));
-        Record post = pre.updateRecord("foo", v -> v.toString());
+        Record post = pre.updateRecord("foo", AbstractMap::toString);
         assertEquals(Record.of("foo", Record.of("bar", 2)),
                      pre);
         assertEquals(Record.of("foo", "{bar=2}"),
