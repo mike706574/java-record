@@ -1,6 +1,7 @@
 package fun.mike.record.alpha;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractMap;
@@ -786,6 +787,8 @@ public class RecordTest {
 
     @Test
     public void code() throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+
         Record rec =
             Record.of("str", "bar",
                       "integ", 5,
@@ -794,9 +797,9 @@ public class RecordTest {
                       "long", 5L,
                       "list", Arrays.asList("foo", "bar"),
                       "map", new HashMap<>(),
-                      "date", new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2025"));
+                      "date", df.parse("2025-01-01T01:00Z"));
 
-        assertEquals("Record.of(\"str\", \"bar\",\n\"integ\", new Integer(5),\n\"bigdec\", new BigDecimal(\"1.0\"),\n\"boole\", true,\n\"long\", new Long(5),\n\"list\", Arrays.asList(\"foo\", \"bar\"),\n\"map\", mapOf(),\n\"date\", new Date(1735711200000L));",
+        assertEquals("Record.of(\"str\", \"bar\",\n\"integ\", new Integer(5),\n\"bigdec\", new BigDecimal(\"1.0\"),\n\"boole\", true,\n\"long\", new Long(5),\n\"list\", Arrays.asList(\"foo\", \"bar\"),\n\"map\", mapOf(),\n\"date\", new Date(1735714800000L));",
                      rec.code());
     }
 }
