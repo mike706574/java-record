@@ -1083,6 +1083,18 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     /**
+     * Returns a new Record with entries from the given map added.
+     * @param map a map
+     * @return a new Record with entries from the given map added
+     */
+    public Record assoc(Map<String, Object> map) {
+        Record record = new Record();
+        record.putAll(this);
+        record.putAll(map);
+        return record;
+    }
+
+    /**
      * Returns a new Record with the given keys and values added.
      * @param k1 a key
      * @param v1 a value
