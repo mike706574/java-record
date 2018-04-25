@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -788,6 +789,8 @@ public class RecordTest {
     @Test
     public void code() throws ParseException {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        df.setTimeZone(tz);
 
         Record rec =
             Record.of("str", "bar",
