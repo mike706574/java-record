@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -1000,12 +1002,52 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     /**
+     * Returns a new Record with the keys from {@code keyPairs} renamed to
+     * the values from {@code keyPairs}.
+     * @param keyPairs a map from existing keys to select to the keys each
+     * should be renamed to
+     * @return a new Record containing the keys from {@code keyPairs} renamed
+     * to the corresponding values from {@code keyPairs}
+     */
+    public Record rename(Map<String, String> keyPairs) {
+        Record newRecord = new Record();
+        for (Map.Entry<String, Object> entry : entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            String toKey = keyPairs.get(key);
+            if(toKey == null) {
+                newRecord.put(key, value);
+            }
+            else {
+                newRecord.put(toKey, value);
+            }
+        }
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the keys from {@code keyPairs} renamed to
+     * the values from {@code keyPairs}.
+     * @param keyPairs a map from existing keys to select to the keys each
+     * should be renamed to
+     * @return a new Record containing the keys from {@code keyPairs} renamed
+     * to the corresponding values from {@code keyPairs}
+     */
+    public Record rename(String... keyPairs) {
+        Map<String, String> keyPairMap = new HashMap<>();
+        for(int i = 0; i < keyPairs.length; i += 2) {
+            keyPairMap.put(keyPairs[i], keyPairs[i + 1]);
+        }
+        return rename(keyPairMap);
+    }
+
+    /**
      * Returns a new Record with only the keys from {@code keyPairs} renamed to
      * the values from {@code keyPairs}.
-     * @param keyPairs a map from the keys to select to the names each should be
-     * renamed to
-     * @return a new Record with only the given keys with only the keys from {@code keyPairs} renamed to
-     * the corresponding values from {@code keyPairs}
+     * @param keyPairs a map from the keys to select to the names each should
+     * be renamed to
+     * @return a new Record containing only the keys from {@code keyPairs}
+     * renamed to the corresponding values from {@code keyPairs}
      */
     public Record selectAndRename(Map<String, String> keyPairs) {
         Record newRecord = new Record();
@@ -1020,14 +1062,13 @@ public class Record extends LinkedHashMap<String, Object> {
         return newRecord;
     }
 
-
     /**
      * Returns a new Record with only the keys from {@code keyPairs} renamed to
      * the values from {@code keyPairs}.
      * @param keyPairs a map from the keys to select to the names each should be
      * renamed to
-     * @return a new Record with only the given keys with only the keys from {@code keyPairs} renamed to
-     * the corresponding values from {@code keyPairs}
+     * @return a new Record containing only the keys from {@code keyPairs}
+     * renamed to the corresponding values from {@code keyPairs}
      */
     public Record selectAndRename(String... keyPairs) {
         Record newRecord = new Record();
