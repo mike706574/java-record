@@ -1963,6 +1963,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -1998,6 +1999,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2015,6 +2017,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2032,6 +2035,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2049,6 +2053,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2066,6 +2071,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2083,6 +2089,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given key mapped to the result of applying
      * the given function to the current value mapped to the key.
+     * @param <T> the type of the updated value
      * @param key a key
      * @param update a function to apply to the current value mapped to key
      * @return a new Record with the given key mapped to the result of applying
@@ -2102,6 +2109,8 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns a new Record with the given mapping function applied to all
      * values of the given type.
+     * @param <T> the type of the values to update
+     * @param <U> the type of updated values
      * @param type The type of value to apply the mapping function to
      * @param mapper A mapping function
      * @return a new Record with the given mapping function applied to all
