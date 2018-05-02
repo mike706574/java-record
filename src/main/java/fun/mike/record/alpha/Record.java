@@ -18,26 +18,49 @@ import java.util.stream.Collectors;
  */
 public class Record extends LinkedHashMap<String, Object> {
     /**
-     * Creates an empty Record.
+     * Creates an empty record.
      */
     public Record() {
         super();
     }
 
     /**
-     * Creates a record from another Record.
+     * Creates a record from another record.
      * @param record A record
      */
     public Record(Record record) {
         super(record);
     }
 
+
     /**
-     * Creates a Record from a map.
+     * Creates a record from a map.
      * @param map A map
      */
     public Record(Map<String, Object> map) {
         super(map);
+    }
+
+    /**
+     * Creates a record from a map whose values are of an arbitrary type.
+     * @param map a map
+     * @param <T> the type of value in the map
+     * @return a record
+     */
+    public static <T> Record of(Map<String, T> map) {
+        Record record = new Record();
+        for(Map.Entry<String, T> entry : map.entrySet()) {
+            record.put(entry.getKey(), entry.getValue());
+        }
+        return record;
+    }
+
+    /**
+     * Returns an empty record.
+     * @return a empty record
+     */
+    public static Record empty() {
+        return new Record();
     }
 
     /**
