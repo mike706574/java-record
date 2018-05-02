@@ -28,6 +28,15 @@ public class RecordTest {
     public final ExpectedException thrown = ExpectedException.none();
 
     @Test
+    public void fromMapConstructor() {
+        Map<String, String> map = new HashMap<>();
+        map.put("foo", "bar");
+        map.put("baz", "bop");
+        Record record = new Record(map);
+        assertEquals(map, record);
+    }
+
+    @Test
     public void fromMap() {
         Map<String, String> map = new HashMap<>();
         map.put("foo", "bar");

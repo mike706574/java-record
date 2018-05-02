@@ -35,9 +35,10 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Creates a record from a map.
-     * @param map A map
+     * @param map a map
+     * @param <T> the type of value in the map
      */
-    public Record(Map<String, Object> map) {
+    public <T> Record(Map<String, T> map) {
         super(map);
     }
 
@@ -49,9 +50,7 @@ public class Record extends LinkedHashMap<String, Object> {
      */
     public static <T> Record of(Map<String, T> map) {
         Record record = new Record();
-        for(Map.Entry<String, T> entry : map.entrySet()) {
-            record.put(entry.getKey(), entry.getValue());
-        }
+        record.putAll(map);
         return record;
     }
 
