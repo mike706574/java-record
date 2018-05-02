@@ -1015,10 +1015,34 @@ public class Record extends LinkedHashMap<String, Object> {
             Object value = entry.getValue();
             String toKey = keyPairs.get(key);
             if(toKey == null) {
+                toKey = key;
+            }
+            newRecord.put(toKey, value);
+        }
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with the keys from {@code keySets} renamed to
+     * all of the keys present in the corresponding value from the {@code keySets}.
+     * @param keySets a map from the keys to select to a set of keys that
+     * should contain the current value for that key
+     * @return a new Record with only the keys from {@code keySets} renamed to
+     * all of the keys present in the corresponding value from the {@code keySets}
+     */
+    public Record renameToMany(Map<String, List<String>> keySets) {
+        Record newRecord = new Record();
+        for (Map.Entry<String, Object> entry : entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            List<String> toKeys = keySets.get(key);
+            if(toKeys == null) {
                 newRecord.put(key, value);
             }
             else {
-                newRecord.put(toKey, value);
+                for (String toKey : toKeys) {
+                    newRecord.put(toKey, value);
+                }
             }
         }
         return newRecord;
@@ -1056,6 +1080,30 @@ public class Record extends LinkedHashMap<String, Object> {
             if (containsKey(fromKey)) {
                 Object value = get(fromKey);
                 newRecord.put(toKey, value);
+            }
+        }
+        return newRecord;
+    }
+
+    /**
+     * Returns a new Record with only the keys from {@code keySets} renamed to
+     * all of the keys present in the corresponding value from the {@code keySets}.
+     * @param keySets a map from the keys to select to a set of keys that
+     * should contain the current value for that key
+     * @return a new Record with only the keys from {@code keySets} renamed to
+     * all of the keys present in the corresponding value from the {@code keySets}
+     */
+    public Record selectAndRenameToMany(Map<String, List<String>> keySets) {
+        Record newRecord = new Record();
+        for (Map.Entry<String, List<String>> entry : keySets.entrySet()) {
+            String fromKey = entry.getKey();
+            List<String> toKey = entry.getValue();
+
+            for (String newKey : toKey) {
+                if (containsKey(fromKey)) {
+                    Object value = get(fromKey);
+                    newRecord.put(newKey, value);
+                }
             }
         }
         return newRecord;

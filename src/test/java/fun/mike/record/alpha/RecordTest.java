@@ -8,6 +8,7 @@ import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
@@ -602,6 +603,34 @@ public class RecordTest {
     }
 
     @Test
+    public void renameToMany() {
+        Record record = Record.of("foo", "bar",
+                                  "baz", 1,
+                                  "bop", 2);
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        Map<String, List<String>> keySets = new HashMap<>();
+        keySets.put("foo", Arrays.asList("foot", "food"));
+        keySets.put("baz", Arrays.asList("bazy"));
+
+        Record newRecord = record.renameToMany(keySets);
+
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        assertEquals(4, newRecord.size());
+        assertEquals("bar", newRecord.get("foot"));
+        assertEquals("bar", newRecord.get("food"));
+        assertEquals(1, newRecord.get("bazy"));
+        assertEquals(2, record.get("bop"));
+    }
+
+    @Test
     public void selectAndRename() {
         Record record = Record.of("foo", "bar",
                                   "baz", 1,
@@ -647,6 +676,33 @@ public class RecordTest {
 
         assertEquals(2, newRecord.size());
         assertEquals("bar", newRecord.get("foot"));
+        assertEquals(1, newRecord.get("bazy"));
+    }
+
+    @Test
+    public void selectAndRenameToMany() {
+        Record record = Record.of("foo", "bar",
+                                  "baz", 1,
+                                  "bop", 2);
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        Map<String, List<String>> keySets = new HashMap<>();
+        keySets.put("foo", Arrays.asList("foot", "food"));
+        keySets.put("baz", Arrays.asList("bazy"));
+
+        Record newRecord = record.selectAndRenameToMany(keySets);
+
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals(2, record.get("bop"));
+
+        assertEquals(3, newRecord.size());
+        assertEquals("bar", newRecord.get("foot"));
+        assertEquals("bar", newRecord.get("food"));
         assertEquals(1, newRecord.get("bazy"));
     }
 
