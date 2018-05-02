@@ -2148,7 +2148,7 @@ public class Record extends LinkedHashMap<String, Object> {
                                          key,
                                          code(value));
                 })
-            .collect(Collectors.joining(",\n"));
+            .collect(Collectors.joining(",\n          "));
 
         return String.format("Record.of(%s);",
                              values);

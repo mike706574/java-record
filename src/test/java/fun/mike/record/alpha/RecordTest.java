@@ -858,7 +858,7 @@ public class RecordTest {
                       "map", new HashMap<>(),
                       "date", df.parse("2025-01-01T01:00Z"));
 
-        assertEquals("Record.of(\"str\", \"bar\",\n\"integ\", new Integer(5),\n\"bigdec\", new BigDecimal(\"1.0\"),\n\"boole\", true,\n\"long\", new Long(5),\n\"list\", Arrays.asList(\"foo\", \"bar\"),\n\"map\", mapOf(),\n\"date\", new Date(1735693200000L));",
+        assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", new Integer(5),\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L));",
                      rec.code());
     }
 }
