@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractMap;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 
+@SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
 public class RecordTest {
     @Rule
     public final ExpectedException thrown = ExpectedException.none();
@@ -47,6 +49,7 @@ public class RecordTest {
 
     @Test
     public void empty() {
+        //noinspection AssertEqualsBetweenInconvertibleTypes
         assertEquals(new HashMap<>(), Record.of());
         assertEquals(new HashMap<>(), Record.empty());
     }
@@ -638,7 +641,7 @@ public class RecordTest {
 
         Map<String, List<String>> keySets = new HashMap<>();
         keySets.put("foo", Arrays.asList("foot", "food"));
-        keySets.put("baz", Arrays.asList("bazy"));
+        keySets.put("baz", Collections.singletonList("bazy"));
 
         Record newRecord = record.renameToMany(keySets);
 
@@ -715,7 +718,7 @@ public class RecordTest {
 
         Map<String, List<String>> keySets = new HashMap<>();
         keySets.put("foo", Arrays.asList("foot", "food"));
-        keySets.put("baz", Arrays.asList("bazy"));
+        keySets.put("baz", Collections.singletonList("bazy"));
 
         Record newRecord = record.selectAndRenameToMany(keySets);
 
@@ -884,5 +887,20 @@ public class RecordTest {
 
         assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", new Integer(5),\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L));",
                      rec.code());
+    }
+
+    @Test
+    public void getType() {
+        Record record = Record.of("foo", 5);
+        Integer foo = record.getType("foo", Integer.class);
+        assertEquals(new Integer(5), foo);
+    }
+
+    @Test
+    public void getTypeTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"1\" of class \"java.lang.Integer\" for key \"foo\" must be an an instance of \"java.lang.String\".");
+        Record record = Record.of("foo", 1);
+        record.getType("foo", String.class);
     }
 }

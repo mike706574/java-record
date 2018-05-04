@@ -509,6 +509,30 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     /**
+     * Returns the value to which the specified key is mapped casted to the
+     * given type, or null if this map contains no mapping for the key. Throws
+     * a TypeMismatchException if the value mapped to the key is not of the
+     * given type.
+     * @param key the key whose associated value is to be returned
+     * @param type the required type of value
+     * @param <T> the required type of value
+     * @return the value of the given type to which the specified key is mappep,
+     *         or null if this map contains no mapping for the key
+     */
+    public <T> T getType(String key, Class<T> type) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (type.isInstance(value)) {
+            return type.cast(value);
+        }
+        String typeName = String.format("an instance of \"%s\"",
+                                        type.getName());
+        throw new TypeMismatchException(key, value, typeName, value.getClass().getName());
+    }
+
+    /**
      * Returns an Optional containing the string value to which the specified
      * key is mapped, or an empty Optional if this map contains no mapping for
      * the key. Throws a {@code TypeMismatchException} if the value mapped to the key

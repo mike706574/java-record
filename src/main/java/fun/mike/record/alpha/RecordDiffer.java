@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class RecordDiffer {
 
     public static final class Diff {
-        public Record left;
-        public Record right;
+        public final Record left;
+        public final Record right;
 
         public List<Entry> leftOnly;
         public List<Entry> rightOnly;
@@ -79,9 +79,9 @@ public class RecordDiffer {
     }
 
     public static final class Match {
-        public String key;
-        public Object left;
-        public Object right;
+        public final String key;
+        public final Object left;
+        public final Object right;
 
         private Match(String key, Object left, Object right) {
             this.key = key;
@@ -120,8 +120,8 @@ public class RecordDiffer {
     }
 
     public static final class Entry {
-        public String key;
-        public Object value;
+        public final String key;
+        public final Object value;
 
         private Entry(String key, Object value) {
             this.key = key;

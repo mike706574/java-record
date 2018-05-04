@@ -1,7 +1,7 @@
 package fun.mike.record.alpha;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Optional;
 
@@ -63,7 +63,7 @@ public class RecordDifferTest {
                                     right,
                                     noEntries,
                                     noEntries,
-                                    Arrays.asList(expectedMatch));
+                                    Collections.singletonList(expectedMatch));
 
         assertEquals(Optional.of(expectedDiff),
                      diff(left, right));
@@ -77,7 +77,7 @@ public class RecordDifferTest {
         Entry expectedEntry = Entry.of("foo", "bar");
         Diff expectedDiff = Diff.of(left,
                                     right,
-                                    Arrays.asList(expectedEntry),
+                                    Collections.singletonList(expectedEntry),
                                     noEntries,
                                     noMatches);
 
@@ -94,7 +94,7 @@ public class RecordDifferTest {
         Diff expectedDiff = Diff.of(left,
                                     right,
                                     noEntries,
-                                    Arrays.asList(expectedEntry),
+                                    Collections.singletonList(expectedEntry),
                                     noMatches);
 
         assertEquals(Optional.of(expectedDiff),
@@ -112,9 +112,9 @@ public class RecordDifferTest {
 
         Diff expectedDiff = Diff.of(left,
                                     right,
-                                    Arrays.asList(Entry.of("c", "3")),
-                                    Arrays.asList(Entry.of("d", "4")),
-                                    Arrays.asList(Match.of("a", "1", "2")));
+                                    Collections.singletonList(Entry.of("c", "3")),
+                                    Collections.singletonList(Entry.of("d", "4")),
+                                    Collections.singletonList(Match.of("a", "1", "2")));
 
         assertEquals(Optional.of(expectedDiff),
                      diff(left, right));
