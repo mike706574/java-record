@@ -30,6 +30,33 @@ public class RecordTest {
     public final ExpectedException thrown = ExpectedException.none();
 
     @Test
+    public void metadata() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("foo", "bar");
+        map.put("baz", "bop");
+
+        Record recordWithoutMetadata = new Record(map);
+
+        assertNull(recordWithoutMetadata.getMetadata());
+        assertNull(recordWithoutMetadata.getMetadataProperty("name"));
+
+        Map<String, Object> metadata = new HashMap<>();
+        metadata.put("name", "fred");
+
+        Record recordWithMetadata = new Record(map, metadata);
+
+        assertEquals(metadata, recordWithMetadata.getMetadata());
+        assertEquals("fred", recordWithMetadata.getMetadataProperty("name"));
+
+        recordWithMetadata.deleteMetadataProperty("name");
+        assertNull(recordWithMetadata.getMetadataProperty("name"));
+
+        recordWithMetadata.setMetadataProperty("name", "bob");
+        assertEquals("bob", recordWithMetadata.getMetadataProperty("name"));
+    }
+
+    @Test
     public void fromMapConstructor() {
         Map<String, String> map = new HashMap<>();
         map.put("foo", "bar");

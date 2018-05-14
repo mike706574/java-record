@@ -3,6 +3,7 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,11 +18,14 @@ import java.util.stream.Collectors;
  * A friendly heterogeneous map class.
  */
 public class Record extends LinkedHashMap<String, Object> {
+    private Map<String, Object> metadata;
+
     /**
      * Creates an empty record.
      */
     public Record() {
         super();
+        this.metadata = null;
     }
 
     /**
@@ -30,8 +34,8 @@ public class Record extends LinkedHashMap<String, Object> {
      */
     public Record(Record record) {
         super(record);
+        this.metadata = record.getMetadata();
     }
-
 
     /**
      * Creates a record from a map.
@@ -40,6 +44,18 @@ public class Record extends LinkedHashMap<String, Object> {
      */
     public <T> Record(Map<String, T> map) {
         super(map);
+        this.metadata = null;
+    }
+
+    /**
+     * Creates a record from a map with the given metadata.
+     * @param map a map
+     * @param metadata metadata
+     * @param <T> the type of value in the map
+     */
+    public <T> Record(Map<String, T> map, Map<String, Object> metadata) {
+        super(map);
+        this.metadata = metadata == null ? null : new HashMap<>(metadata);
     }
 
     /**
@@ -60,6 +76,14 @@ public class Record extends LinkedHashMap<String, Object> {
      */
     public static Record empty() {
         return new Record();
+    }
+
+    /**
+     * Returns an empty record with the given metadata.
+     * @return an empty record with the given metadata
+     */
+    public static Record empty(Map<String, Object> metadata) {
+        return new Record(new HashMap<>(), metadata);
     }
 
     /**
@@ -1014,7 +1038,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * @return a new Record without the given keys
      */
     public Record dissoc(Collection<String> keys) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         for (String key : keys) {
             record.remove(key);
@@ -1037,7 +1061,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * @return a new Record with only the given keys
      */
     public Record select(Collection<String> keys) {
-        Record record = new Record();
+        Record record = empty(metadata);
         for (String key : keys) {
             if (containsKey(key)) {
                 record.put(key, get(key));
@@ -1055,7 +1079,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * to the corresponding values from {@code keyPairs}
      */
     public Record rename(Map<String, String> keyPairs) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
         for (Map.Entry<String, Object> entry : entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
@@ -1077,7 +1101,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * all of the keys present in the corresponding value from the {@code keySets}
      */
     public Record renameToMany(Map<String, List<String>> keySets) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
         for (Map.Entry<String, Object> entry : entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
@@ -1119,7 +1143,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * renamed to the corresponding values from {@code keyPairs}
      */
     public Record selectAndRename(Map<String, String> keyPairs) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
         for (Map.Entry<String, String> entry : keyPairs.entrySet()) {
             String fromKey = entry.getKey();
             String toKey = entry.getValue();
@@ -1140,7 +1164,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * all of the keys present in the corresponding value from the {@code keySets}
      */
     public Record selectAndRenameToMany(Map<String, List<String>> keySets) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
         for (Map.Entry<String, List<String>> entry : keySets.entrySet()) {
             String fromKey = entry.getKey();
             List<String> toKey = entry.getValue();
@@ -1164,7 +1188,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * renamed to the corresponding values from {@code keyPairs}
      */
     public Record selectAndRename(String... keyPairs) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
         for(int i = 0; i < keyPairs.length; i += 2) {
             String fromKey = keyPairs[i];
             String toKey = keyPairs[i + 1];
@@ -1182,7 +1206,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * @return a new Record with entries from the given map added
      */
     public Record assoc(Map<String, Object> map) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.putAll(map);
         return record;
@@ -1195,14 +1219,14 @@ public class Record extends LinkedHashMap<String, Object> {
      * @return a new Record with the given keys and values added
      */
     public Record assoc(String k1, Object v1) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         return record;
     }
 
     public Record assoc(String k1, Object v1, String k2, Object v2) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1211,7 +1235,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
             String k3, Object v3) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1221,7 +1245,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     public Record assoc(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1233,7 +1257,7 @@ public class Record extends LinkedHashMap<String, Object> {
     public Record assoc(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1246,7 +1270,7 @@ public class Record extends LinkedHashMap<String, Object> {
     public Record assoc(String k1, Object v1, String k2, Object v2,
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1261,7 +1285,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1277,7 +1301,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k3, Object v3, String k4, Object v4,
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1295,7 +1319,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1314,7 +1338,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k5, Object v5, String k6, Object v6,
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1335,7 +1359,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1357,7 +1381,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k7, Object v7, String k8, Object v8,
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1381,7 +1405,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1406,7 +1430,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k9, Object v9, String k10, Object v10,
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1433,7 +1457,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1462,7 +1486,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k11, Object v11, String k12, Object v12,
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1492,7 +1516,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1523,7 +1547,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k13, Object v13, String k14, Object v14,
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17, String k18, Object v18) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1557,7 +1581,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k17, Object v17, String k18, Object v18,
             String k19, Object v19
     ) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -1592,7 +1616,7 @@ public class Record extends LinkedHashMap<String, Object> {
             String k15, Object v15, String k16, Object v16,
             String k17, Object v17, String k18, Object v18,
             String k19, Object v19, String k20, Object v20) {
-        Record record = new Record();
+        Record record = empty(metadata);
         record.putAll(this);
         record.put(k1, v1);
         record.put(k2, v2);
@@ -2163,7 +2187,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * values
      */
     public <T, U> Record mapValues(Class<T> type, Function<T, U> mapper) {
-        Record newRecord = new Record();
+        Record newRecord = empty(metadata);
 
         for(Map.Entry<String, Object> entry : entrySet()) {
             String key = entry.getKey();
@@ -2257,5 +2281,48 @@ public class Record extends LinkedHashMap<String, Object> {
                           value,
                           value.getClass().getName());
         throw new IllegalArgumentException(message);
+    }
+
+    /**
+     * Returns the record's metadata.
+     * @return the record's metadata
+     */
+    public Record getMetadata() {
+        return metadata == null ? null : new Record(metadata);
+    }
+
+    /**
+     * Sets a metadata property.
+     * @param key a key
+     * @param value a value
+     */
+    public void setMetadataProperty(String key, Object value) {
+        initMetadata();
+        metadata.put(key, value);
+    }
+
+    /**
+     * Deletes a metadata property.
+     * @param key a key
+     */
+    public void deleteMetadataProperty(String key) {
+        initMetadata();
+        metadata.remove(key);
+    }
+
+    /**
+     * Gets the value of a metadata property.
+     * @param key a key
+     * @return the value
+     */
+    public Object getMetadataProperty(String key) {
+        initMetadata();
+        return metadata.get(key);
+    }
+
+    private void initMetadata() {
+        if(metadata == null) {
+            metadata = new HashMap<>();
+        }
     }
 }
