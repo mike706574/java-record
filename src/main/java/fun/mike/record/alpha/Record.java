@@ -3,7 +3,6 @@ package fun.mike.record.alpha;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -731,6 +730,21 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
+
+
+    public <T> List<T> getList(String key, Class<T> type) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof List) {
+            @SuppressWarnings("unchecked")
+            List<T> result = (List<T>) value;
+            return result;
+        }
+        throw new TypeMismatchException(key, value, "list", value.getClass().getName());
+    }
+
 
     /**
      * Returns an Optional containing the List value to which the specified key

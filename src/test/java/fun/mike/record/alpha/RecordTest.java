@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -248,6 +249,19 @@ public class RecordTest {
     public void getList() {
         Record record = Record.of("foo", Arrays.asList("bar", "baz"));
         assertEquals(Arrays.asList("bar", "baz"), record.getList("foo"));
+    }
+
+    @Test
+    public void getListWithExplicitGenericType() {
+        List<String> strings = Arrays.asList("bar", "baz");
+        Record record = Record.of("foo", strings);
+
+        List<String> uppercaseStrings = record.getList("foo", String.class)
+                .stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+
+        assertEquals(Arrays.asList("BAR", "BAZ"), uppercaseStrings);
     }
 
     @Test
