@@ -512,11 +512,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the string value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a string.
      * @param key the key whose associated value is to be returned
      * @return the string value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a string
      */
@@ -533,14 +533,14 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the value to which the specified key is mapped casted to the
-     * given type, or null if this map contains no mapping for the key. Throws
+     * given type, or null if this record contains no mapping for the key. Throws
      * a TypeMismatchException if the value mapped to the key is not of the
      * given type.
      * @param key the key whose associated value is to be returned
      * @param type the required type of value
      * @param <T> the required type of value
      * @return the value of the given type to which the specified key is mappep,
-     *         or null if this map contains no mapping for the key
+     *         or null if this record contains no mapping for the key
      */
     public <T> T getType(String key, Class<T> type) {
         Object value = this.get(key);
@@ -557,12 +557,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the string value to which the specified
-     * key is mapped, or an empty Optional if this map contains no mapping for
+     * key is mapped, or an empty Optional if this record contains no mapping for
      * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not a string.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the string value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a string
      */
@@ -579,11 +579,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the boolean value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a boolean.
      * @param key the key whose associated value is to be returned
      * @return the boolean value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a boolean
      */
@@ -600,12 +600,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the boolean value to which the specified
-     * key is mapped, or an empty Optional if this map contains no mapping for
+     * key is mapped, or an empty Optional if this record contains no mapping for
      * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not a boolean.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the boolean value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a boolean
      */
@@ -622,11 +622,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the integer value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not an integer.
      * @param key the key whose associated value is to be returned
      * @return the integer value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * an integer
      */
@@ -643,12 +643,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the integer value to which the specified
-     * key is mapped, or an empty Optional if this map contains no mapping for
+     * key is mapped, or an empty Optional if this record contains no mapping for
      * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
      * is not an integer.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the integer value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * an integer
      */
@@ -665,11 +665,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the long value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not an long.
      * @param key the key whose associated value is to be returned
      * @return the long value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a long
      */
@@ -686,12 +686,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the long value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a long.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the long value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a long
      */
@@ -709,12 +709,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the List value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a List.
      * @param key the key whose associated value is to be returned
      * @param <T> the list type
      * @return the List value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a list
      */
@@ -748,13 +748,13 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the List value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a List.
      * @param key the key whose associated value is to be returned
      * @param <T> the list type
      * @return an Optional containing the List value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a list
      */
@@ -773,13 +773,13 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the Map value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a Map.
      * @param key the key whose associated value is to be returned
      * @param <K> the map's key type
      * @param <V> the map's value type
      * @return the Map value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a map
      */
@@ -798,14 +798,14 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the Map value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * an Map.
      * @param key the key whose associated value is to be returned
      * @param <K> the map's key type
      * @param <V> the map's value type
      * @return an Optional containing the Map value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a map
      */
@@ -824,11 +824,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the record value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a record.
      * @param key the key whose associated value is to be returned
      * @return the record value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a record
      */
@@ -845,12 +845,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the record value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a record.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the record value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a record
      */
@@ -867,11 +867,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the float value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a float.
      * @param key the key whose associated value is to be returned
      * @return the float value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a float
      */
@@ -888,12 +888,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the float value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a float.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the float value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a float
      */
@@ -910,11 +910,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the double value to which the specified key is mapped, or null
-     * if this map contains no mapping for the key. Throws a
+     * if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a double.
      * @param key the key whose associated value is to be returned
      * @return the double value to which the specified key is mapped, or null
-     *         if this map contains no mapping for the key
+     *         if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a double
      */
@@ -931,12 +931,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the double value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a double.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the double value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a double
      */
@@ -953,11 +953,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the BigDecimal value to which the specified key is mapped, or
-     * nullif this map contains no mapping for the key. Throws a
+     * nullif this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a BigDecimal.
      * @param key the key whose associated value is to be returned
      * @return the BigDecimal value to which the specified key is mapped, or
-     *         null if this map contains no mapping for the key
+     *         null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a BigDecimal
      */
@@ -974,12 +974,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the BigDecimal value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a BigDecimal.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the BigDecimal value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a BigDecimal
      */
@@ -996,11 +996,11 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the Date value to which the specified key is mapped, or
-     * nullif this map contains no mapping for the key. Throws a
+     * nullif this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a Date.
      * @param key the key whose associated value is to be returned
      * @return the Date value to which the specified key is mapped, or null if
-     *         this map contains no mapping for the key
+     *         this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a Date
      */
@@ -1017,12 +1017,12 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an Optional containing the Date value to which the specified key
-     * is mapped, or an empty Optional if this map contains no mapping for the
+     * is mapped, or an empty Optional if this record contains no mapping for the
      * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
      * a Date.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the Date value to which the specified
-     *         key is mapped, or null if this map contains no mapping for the key
+     *         key is mapped, or null if this record contains no mapping for the key
      * @throws fun.mike.record.alpha.TypeMismatchException if the value is not
      * a Date
      */
