@@ -840,6 +840,13 @@ public class Record extends LinkedHashMap<String, Object> {
         if (value instanceof Record) {
             return (Record) value;
         }
+
+        try {
+            Map<String, Object> map = (Map<String, Object>) value;
+            return new Record(map);
+        }
+        catch(ClassCastException ex) {}
+
         throw new TypeMismatchException(key, value, "record", value.getClass().getName());
     }
 

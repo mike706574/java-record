@@ -361,6 +361,19 @@ public class RecordTest {
     }
 
     @Test
+    public void getRecordFromMap() {
+        Map<String, Object> childMap = new HashMap<>();
+
+        childMap.put("bar", 1);
+        childMap.put("baz", 2);
+
+        Record record = Record.of("foo", childMap);
+        Record expectedChildRecord = Record.of("bar", 1,
+                                               "baz", 2);
+        assertEquals(expectedChildRecord, record.getRecord("foo"));
+    }
+
+    @Test
     public void getNullRecord() {
         Record record = Record.of("foo", null);
         assertNull(record.getRecord("foo"));
@@ -917,14 +930,14 @@ public class RecordTest {
         df.setTimeZone(tz);
 
         Record rec =
-            Record.of("str", "bar",
-                      "integ", 5,
-                      "bigdec", new BigDecimal("1.0"),
-                      "boole", true,
-                      "long", 5L,
-                      "list", Arrays.asList("foo", "bar"),
-                      "map", new HashMap<>(),
-                      "date", df.parse("2025-01-01T01:00Z"));
+                Record.of("str", "bar",
+                          "integ", 5,
+                          "bigdec", new BigDecimal("1.0"),
+                          "boole", true,
+                          "long", 5L,
+                          "list", Arrays.asList("foo", "bar"),
+                          "map", new HashMap<>(),
+                          "date", df.parse("2025-01-01T01:00Z"));
 
         assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", new Integer(5),\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L));",
                      rec.code());
