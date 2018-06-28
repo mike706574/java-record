@@ -2241,7 +2241,7 @@ public class Record extends LinkedHashMap<String, Object> {
                 })
             .collect(Collectors.joining(",\n          "));
 
-        return String.format("Record.of(%s);",
+        return String.format("Record.of(%s)",
                              values);
     }
 
