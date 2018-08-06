@@ -1663,10 +1663,10 @@ public class Record extends LinkedHashMap<String, Object> {
     }
 
     /**
-     * Returns a new Record with the given keys and values added.
+     * Mutably adds the given keys and values to the Record.
      * @param k1 a key
      * @param v1 a value
-     * @return a new Record with the given keys and values added
+     * @return the mutated Record
      */
     public Record set(String k1, Object v1) {
         put(k1, v1);
