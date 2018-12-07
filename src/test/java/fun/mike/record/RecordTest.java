@@ -1,4 +1,4 @@
-package fun.mike.record.alpha;
+package fun.mike.record;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;

@@ -1,4 +1,4 @@
-package fun.mike.record.alpha;
+package fun.mike.record;
 
 /**
  * Thrown when the type of a value from a record does not match the expected

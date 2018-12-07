@@ -1,17 +1,17 @@
-package fun.mike.record.alpha;
+package fun.mike.record;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Optional;
 
-import fun.mike.record.alpha.RecordDiffer.Diff;
-import fun.mike.record.alpha.RecordDiffer.Entry;
-import fun.mike.record.alpha.RecordDiffer.Match;
+import fun.mike.record.RecordDiffer.Diff;
+import fun.mike.record.RecordDiffer.Entry;
+import fun.mike.record.RecordDiffer.Match;
 
 import org.junit.Test;
 
-import static fun.mike.record.alpha.RecordDiffer.diff;
+import static fun.mike.record.RecordDiffer.diff;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

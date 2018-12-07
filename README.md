@@ -79,11 +79,11 @@ Here are all the access methods available:
 | java.util.Map        | getMap        | optionalMap        |
 | fun.mike.Record      | getRecord     | optionalRecord     |
 
-A `fun.mike.record.alpha.TypeMismatchException` is thrown when the present value doesn't match the expected type:
+A `fun.mike.record.TypeMismatchException` is thrown when the present value doesn't match the expected type:
 
 ```java
 Integer str = rec.getInteger("str");
-=> fun.mike.record.alpha.TypeMismatchException: Value "foo" of class "java.lang.String" for key "str" must be an integer.
+=> fun.mike.record.TypeMismatchException: Value "foo" of class "java.lang.String" for key "str" must be an integer.
 ```
 
 `Record`s extend `java.util.LinkedHashMap<String, Object>`:
