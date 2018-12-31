@@ -79,6 +79,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns an empty record with the given metadata.
+     * @param metadata metadata
      * @return an empty record with the given metadata
      */
     public static Record empty(Map<String, Object> metadata) {
@@ -842,6 +843,7 @@ public class Record extends LinkedHashMap<String, Object> {
         }
 
         try {
+            @SuppressWarnings("unchecked")
             Map<String, Object> map = (Map<String, Object>) value;
             return new Record(map);
         }
