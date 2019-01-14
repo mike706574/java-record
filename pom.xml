@@ -9,7 +9,7 @@
 
   <groupId>fun.mike</groupId>
   <artifactId>record</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <url>https://github.com/mike706574/java-record</url>
