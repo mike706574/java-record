@@ -2392,7 +2392,7 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof LocalDateTime) {
             LocalDateTime localDateTimeValue = ((LocalDateTime)value);
-            long time = localDateTimeValue.atZone(ZoneId.systemDefault()).toEpochSecond();
+            long time = localDateTimeValue.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
             return String.format("Instant.ofEpochMilli(%dL).atZone(ZoneId.systemDefault()).toLocalDate()",
                                  time);
         }
