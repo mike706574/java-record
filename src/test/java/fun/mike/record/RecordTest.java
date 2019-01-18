@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -595,7 +596,7 @@ public class RecordTest {
     @Test
     public void getLocalDateTypeMismatch() {
         thrown.expect(TypeMismatchException.class);
-        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a local date.");
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a LocalDate.");
         Record record = Record.of("foo", "bar");
         record.getLocalDate("foo");
     }
@@ -617,9 +618,53 @@ public class RecordTest {
     @Test
     public void optionalLocalDateTypeMismatch() {
         thrown.expect(TypeMismatchException.class);
-        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a local date.");
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a LocalDate.");
         Record record = Record.of("foo", "bar");
         record.optionalLocalDate("foo");
+    }
+
+    @Test
+    public void getLocalDateTime() throws ParseException {
+        LocalDateTime localDateTime = LocalDateTime.parse("2000-01-02T01:15:30");
+
+        Record record = Record.of("foo", localDateTime);
+        assertEquals(localDateTime, record.getLocalDateTime("foo"));
+    }
+
+    @Test
+    public void getNullLocalDateTime() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getLocalDateTime("foo"));
+    }
+
+    @Test
+    public void getLocalDateTimeTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a LocalDateTime.");
+        Record record = Record.of("foo", "bar");
+        record.getLocalDateTime("foo");
+    }
+
+    @Test
+    public void optionalLocalDateTime() throws ParseException {
+        LocalDateTime localDateTime = LocalDateTime.parse("2000-01-02T01:15:30");
+
+        Record record = Record.of("foo", localDateTime);
+        assertEquals(Optional.of(localDateTime), record.optionalLocalDateTime("foo"));
+    }
+
+    @Test
+    public void optionalNullLocalDateTime() {
+        Record record = Record.of("foo", null);
+        assertEquals(Optional.empty(), record.optionalLocalDateTime("foo"));
+    }
+
+    @Test
+    public void optionalLocalDateTimeTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a LocalDateTime.");
+        Record record = Record.of("foo", "bar");
+        record.optionalLocalDateTime("foo");
     }
 
     @Test
