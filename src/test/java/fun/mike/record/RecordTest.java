@@ -1033,9 +1033,6 @@ public class RecordTest {
                           "LocalDate", LocalDate.parse("2025-01-01"),
                           "LocalDateTime", LocalDateTime.parse("2025-01-01T01:00:00"));
 
-        rec.print();
-
-
         assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", new Integer(5),\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L),\n          \"LocalDate\", LocalDate.parse(\"2025-01-01\"),\n          \"LocalDateTime\", Instant.ofEpochMilli(1735714800000L).atZone(ZoneId.systemDefault()).toLocalDate())",
                      rec.code());
     }
