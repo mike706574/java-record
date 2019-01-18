@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.time.LocalDate;
 
 /**
  * A friendly heterogeneous map class.
@@ -962,7 +963,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the BigDecimal value to which the specified key is mapped, or
-     * nullif this record contains no mapping for the key. Throws a
+     * null if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a BigDecimal.
      * @param key the key whose associated value is to be returned
      * @return the BigDecimal value to which the specified key is mapped, or
@@ -1005,7 +1006,7 @@ public class Record extends LinkedHashMap<String, Object> {
 
     /**
      * Returns the Date value to which the specified key is mapped, or
-     * nullif this record contains no mapping for the key. Throws a
+     * null if this record contains no mapping for the key. Throws a
      * TypeMismatchException if the value mapped to the key is not a Date.
      * @param key the key whose associated value is to be returned
      * @return the Date value to which the specified key is mapped, or null if
@@ -1044,6 +1045,54 @@ public class Record extends LinkedHashMap<String, Object> {
             return Optional.of((Date) value);
         }
         throw new TypeMismatchException(key, value, "date", value.getClass().getName());
+    }
+
+    /**
+     * Returns the LocalDate value to which the specified key is mapped, or
+     * null if this record contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a LocalDate.
+     * @param key the key whose associated value is to be returned
+     * @return the LocalDate value to which the specified key is mapped, or null
+     *         if this record contains no mapping for the key
+     * @throws TypeMismatchException if the value is not a LocalDate
+     */
+    public LocalDate getLocalDate(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof LocalDate) {
+            return (LocalDate) value;
+        }
+        throw new TypeMismatchException(key,
+                                        value,
+                                        "local date",
+                                        value.getClass().getName());
+    }
+
+    /**
+     * Returns an Optional containing the LocalDate value to which the specified
+     * key is mapped, or an empty Optional if this record contains no mapping for
+     * the key. Throws a {@code TypeMismatchException} if the value mapped to the
+     * key is not a LocalDate.
+     * @param key the key whose associated value is to be returned
+     * @return an Optional containing the LocalDate value to which the specified
+     *         key is mapped, or null if this record contains no mapping for the
+     *         key
+     * @throws TypeMismatchException if the value is not a LocalDate
+     */
+    public Optional<LocalDate> optionalLocalDate(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof LocalDate) {
+            return Optional.of((LocalDate) value);
+        }
+        throw new TypeMismatchException(key,
+                                        value,
+                                        "local date",
+                                        value.getClass().getName());
     }
 
     /**

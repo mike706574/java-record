@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
+import java.time.LocalDate;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -575,6 +576,50 @@ public class RecordTest {
         thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a date.");
         Record record = Record.of("foo", "bar");
         record.optionalDate("foo");
+    }
+
+    @Test
+    public void getLocalDate() throws ParseException {
+        LocalDate localDate = LocalDate.parse("2000-01-02");
+
+        Record record = Record.of("foo", localDate);
+        assertEquals(localDate, record.getLocalDate("foo"));
+    }
+
+    @Test
+    public void getNullLocalDate() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getLocalDate("foo"));
+    }
+
+    @Test
+    public void getLocalDateTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a local date.");
+        Record record = Record.of("foo", "bar");
+        record.getLocalDate("foo");
+    }
+
+    @Test
+    public void optionalLocalDate() throws ParseException {
+        LocalDate localDate = LocalDate.parse("2000-01-02");
+
+        Record record = Record.of("foo", localDate);
+        assertEquals(Optional.of(localDate), record.optionalLocalDate("foo"));
+    }
+
+    @Test
+    public void optionalNullLocalDate() {
+        Record record = Record.of("foo", null);
+        assertEquals(Optional.empty(), record.optionalLocalDate("foo"));
+    }
+
+    @Test
+    public void optionalLocalDateTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a local date.");
+        Record record = Record.of("foo", "bar");
+        record.optionalLocalDate("foo");
     }
 
     @Test
