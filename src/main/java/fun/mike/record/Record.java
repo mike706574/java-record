@@ -1,6 +1,10 @@
 package fun.mike.record;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -2382,8 +2386,15 @@ public class Record extends LinkedHashMap<String, Object> {
             return String.format("new Date(%dL)", time);
         }
         if (value instanceof LocalDate) {
-            long time = ((Date)value).getTime();
-            return String.format("new Date(%dL)", time);
+            LocalDate localDateValue = ((LocalDate)value);
+            String basicIsoDateString = localDateValue.format(DateTimeFormatter.ISO_LOCAL_DATE);
+            return String.format("LocalDate.parse(\"%s\")", basicIsoDateString);
+        }
+        if (value instanceof LocalDateTime) {
+            LocalDateTime localDateTimeValue = ((LocalDateTime)value);
+            long time = localDateTimeValue.atZone(ZoneId.systemDefault()).toEpochSecond();
+            return String.format("Instant.ofEpochMilli(%dL).atZone(ZoneId.systemDefault()).toLocalDate()",
+                                 time);
         }
         if (value instanceof Map) {
             @SuppressWarnings("unchecked")
