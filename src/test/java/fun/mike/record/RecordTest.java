@@ -11,9 +11,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
@@ -300,6 +302,59 @@ public class RecordTest {
         thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a list.");
         Record record = Record.of("foo", "bar");
         record.optionalList("foo");
+    }
+
+    @Test
+    public void getSet() {
+        Record record = Record.of("foo", setOf("bar", "baz"));
+        assertEquals(setOf("bar", "baz"), record.getSet("foo"));
+    }
+
+    @Test
+    public void getSetWithExplicitGenericType() {
+        Set<String> strings = setOf("bar", "baz");
+        Record record = Record.of("foo", strings);
+
+        Set<String> uppercaseStrings = record.getSet("foo", String.class)
+                .stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toSet());
+
+        assertEquals(setOf("BAR", "BAZ"), uppercaseStrings);
+    }
+
+    @Test
+    public void getNullSet() {
+        Record record = Record.of("foo", null);
+        assertNull(record.getSet("foo"));
+    }
+
+    @Test
+    public void getSetTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a set.");
+        Record record = Record.of("foo", "bar");
+        record.getSet("foo");
+    }
+
+    @Test
+    public void optionalSet() {
+        Record record = Record.of("foo", setOf("bar", "baz"));
+        assertEquals(Optional.of(setOf("bar", "baz")), record.optionalSet("foo"));
+    }
+
+    @Test
+    public void optionalNullSet() {
+        Record record = Record.of("foo", null);
+        assertEquals(Optional.empty(), record.optionalSet("foo"));
+    }
+
+    @Test
+    public void optionalSetTypeMismatch() {
+        thrown.expect(TypeMismatchException.class);
+        thrown.expectMessage("Value \"bar\" of class \"java.lang.String\" for key \"foo\" must be a set.");
+        Record record = Record.of("foo", "bar");
+        record.optionalSet("foo");
     }
 
     @Test
@@ -1050,5 +1105,10 @@ public class RecordTest {
         thrown.expectMessage("Value \"1\" of class \"java.lang.Integer\" for key \"foo\" must be an an instance of \"java.lang.String\".");
         Record record = Record.of("foo", 1);
         record.getType("foo", String.class);
+    }
+
+    @SafeVarargs
+    private static <T> Set<T> setOf(T... items) {
+        return new HashSet<>(Arrays.asList(items));
     }
 }

@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -776,6 +777,78 @@ public class Record extends LinkedHashMap<String, Object> {
             return result;
         }
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
+    }
+
+    /**
+     * Returns the Set value to which the specified key is mapped, or null
+     * if this record contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a Set.
+     * @param key the key whose associated value is to be returned
+     * @param <T> the set type
+     * @return the Set value to which the specified key is mapped, or null
+     *         if this record contains no mapping for the key
+     * @throws TypeMismatchException if the value is not a set
+     */
+    public <T> Set<T> getSet(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Set) {
+            @SuppressWarnings("unchecked")
+            Set<T> result = (Set<T>) value;
+            return result;
+        }
+        throw new TypeMismatchException(key, value, "set", value.getClass().getName());
+    }
+
+    /**
+     * Returns the Set value to which the specified key is mapped, or null
+     * if this record contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a Set.
+     * @param key the key whose associated value is to be returned
+     * @param type the set type
+     * @param <T> the set type
+     * @return the Set value to which the specified key is mapped, or null
+     *         if this record contains no mapping for the key
+     * @throws TypeMismatchException if the value is not a set
+     */
+    public <T> Set<T> getSet(String key, Class<T> type) {
+        Object value = this.get(key);
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Set) {
+            @SuppressWarnings("unchecked")
+            Set<T> result = (Set<T>) value;
+            return result;
+        }
+        throw new TypeMismatchException(key, value, "set", value.getClass().getName());
+    }
+
+    /**
+     * Returns an Optional containing the Set value to which the specified key
+     * is mapped, or an empty Optional if this record contains no mapping for
+     * the key. Throws a {@code TypeMismatchException} if the value mapped to
+     * the key is not a Set.
+     * @param key the key whose associated value is to be returned
+     * @param <T> the set type
+     * @return an Optional containing the Set value to which the specified
+     *         key is mapped, or null if this record contains no mapping for
+     *         the key
+     * @throws TypeMismatchException if the value is not a set
+     */
+    public <T> Optional<Set<T>> optionalSet(String key) {
+        Object value = this.get(key);
+        if (value == null) {
+            return Optional.empty();
+        }
+        if (value instanceof Set) {
+            @SuppressWarnings("unchecked")
+            Optional<Set<T>> result = Optional.of((Set<T>) value);
+            return result;
+        }
+        throw new TypeMismatchException(key, value, "set", value.getClass().getName());
     }
 
     /**
