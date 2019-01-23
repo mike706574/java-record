@@ -1,9 +1,9 @@
 package fun.mike.record;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,8 +17,6 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * A friendly heterogeneous map class.
@@ -566,7 +564,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the string value to which the specified
      * key is mapped, or an empty Optional if this record contains no mapping for
-     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
+     * the key. Throws a {@link TypeMismatchException} if the value mapped to the key
      * is not a string.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the string value to which the specified
@@ -609,7 +607,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the boolean value to which the specified
      * key is mapped, or an empty Optional if this record contains no mapping for
-     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
+     * the key. Throws a {@link TypeMismatchException} if the value mapped to the key
      * is not a boolean.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the boolean value to which the specified
@@ -652,7 +650,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the integer value to which the specified
      * key is mapped, or an empty Optional if this record contains no mapping for
-     * the key. Throws a {@code TypeMismatchException} if the value mapped to the key
+     * the key. Throws a {@link TypeMismatchException} if the value mapped to the key
      * is not an integer.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the integer value to which the specified
@@ -695,7 +693,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the long value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a long.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the long value to which the specified
@@ -765,7 +763,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the List value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a List.
      * @param key the key whose associated value is to be returned
      * @param <T> the list type
@@ -790,7 +788,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns the Set value to which the specified key is mapped, or null
      * if this record contains no mapping for the key. Throws a
-     * {@code TypeMismatchException} if the value mapped to the key is not a Set.
+     * {@link TypeMismatchException} if the value mapped to the key is not a Set.
      * @param key the key whose associated value is to be returned
      * @param <T> the set type
      * @return the Set value to which the specified key is mapped, or null
@@ -837,7 +835,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the Set value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for
-     * the key. Throws a {@code TypeMismatchException} if the value mapped to
+     * the key. Throws a {@link TypeMismatchException} if the value mapped to
      * the key is not a Set.
      * @param key the key whose associated value is to be returned
      * @param <T> the set type
@@ -887,7 +885,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the Map value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * an Map.
      * @param key the key whose associated value is to be returned
      * @param <K> the map's key type
@@ -942,7 +940,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the record value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a record.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the record value to which the specified
@@ -985,7 +983,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the float value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a float.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the float value to which the specified
@@ -1028,7 +1026,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the double value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a double.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the double value to which the specified
@@ -1071,7 +1069,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the BigDecimal value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a BigDecimal.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the BigDecimal value to which the specified
@@ -1114,7 +1112,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the Date value to which the specified key
      * is mapped, or an empty Optional if this record contains no mapping for the
-     * key. Throws a {@code TypeMismatchException} if the value mapped to the key is not
+     * key. Throws a {@link TypeMismatchException} if the value mapped to the key is not
      * a Date.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the Date value to which the specified
@@ -1159,7 +1157,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the LocalDate value to which the specified
      * key is mapped, or an empty Optional if this record contains no mapping for
-     * the key. Throws a {@code TypeMismatchException} if the value mapped to the
+     * the key. Throws a {@link TypeMismatchException} if the value mapped to the
      * key is not a LocalDate.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the LocalDate value to which the specified
@@ -1208,7 +1206,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns an Optional containing the LocalDateTime value to which the
      * specified key is mapped, or an empty Optional if this record contains no
-     * mapping for the key. Throws a {@code TypeMismatchException} if the value
+     * mapping for the key. Throws a {@link TypeMismatchException} if the value
      * mapped to the key is not a LocalDateTime.
      * @param key the key whose associated value is to be returned
      * @return an Optional containing the LocalDateTime value to which the
