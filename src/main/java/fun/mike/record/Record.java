@@ -714,7 +714,6 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "long", value.getClass().getName());
     }
 
-
     /**
      * Returns the List value to which the specified key is mapped, or null
      * if this record contains no mapping for the key. Throws a
@@ -723,8 +722,7 @@ public class Record extends LinkedHashMap<String, Object> {
      * @param <T> the list type
      * @return the List value to which the specified key is mapped, or null
      *         if this record contains no mapping for the key
-     * @throws TypeMismatchException if the value is not
-     * a list
+     * @throws TypeMismatchException if the value is not a list
      */
     public <T> List<T> getList(String key) {
         Object value = this.get(key);
@@ -739,7 +737,17 @@ public class Record extends LinkedHashMap<String, Object> {
         throw new TypeMismatchException(key, value, "list", value.getClass().getName());
     }
 
-
+    /**
+     * Returns the List value to which the specified key is mapped, or null
+     * if this record contains no mapping for the key. Throws a
+     * TypeMismatchException if the value mapped to the key is not a List.
+     * @param key the key whose associated value is to be returned
+     * @param type the list type
+     * @param <T> the list type
+     * @return the List value to which the specified key is mapped, or null
+     *         if this record contains no mapping for the key
+     * @throws TypeMismatchException if the value is not a list
+     */
     public <T> List<T> getList(String key, Class<T> type) {
         Object value = this.get(key);
         if (value == null) {
@@ -782,7 +790,7 @@ public class Record extends LinkedHashMap<String, Object> {
     /**
      * Returns the Set value to which the specified key is mapped, or null
      * if this record contains no mapping for the key. Throws a
-     * TypeMismatchException if the value mapped to the key is not a Set.
+     * {@code TypeMismatchException} if the value mapped to the key is not a Set.
      * @param key the key whose associated value is to be returned
      * @param <T> the set type
      * @return the Set value to which the specified key is mapped, or null
