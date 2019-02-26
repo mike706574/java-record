@@ -1411,6 +1411,9 @@ public class Record extends LinkedHashMap<String, Object> {
      * @return a new Record with entries from the given map added
      */
     public Record assoc(Map<String, Object> map) {
+        if(map == null) {
+            return this;
+        }
         Record record = empty(metadata);
         record.putAll(this);
         record.putAll(map);

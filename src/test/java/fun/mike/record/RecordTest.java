@@ -723,6 +723,40 @@ public class RecordTest {
     }
 
     @Test
+    public void assocMap() {
+        Record record = Record.of("foo", "bar",
+                                  "baz", 1);
+
+        assertEquals(2, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+
+        Map<String, Object> map = new HashMap<>();
+
+        record = record.assoc(null);
+
+        assertEquals(2, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+
+        map = new HashMap<>();
+        record = record.assoc(map);
+
+        assertEquals(2, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+
+        map.put("bop", "goo");
+
+        record = record.assoc(map);
+
+        assertEquals(3, record.size());
+        assertEquals("bar", record.get("foo"));
+        assertEquals(1, record.get("baz"));
+        assertEquals("goo", record.get("bop"));
+    }
+
+    @Test
     public void assoc() {
         Record record = new Record();
 
