@@ -2439,6 +2439,12 @@ public class Record extends LinkedHashMap<String, Object> {
         if (value instanceof String) {
             return String.format("\"%s\"", value);
         }
+        if (value instanceof Float) {
+            return value.toString() + "f";
+        }
+        if (value instanceof Double) {
+            return value.toString() + "d";
+        }
         if (value instanceof BigDecimal) {
             return String.format("new BigDecimal(\"%s\")", value);
         }
