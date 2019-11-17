@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -2475,8 +2474,10 @@ public class Record extends LinkedHashMap<String, Object> {
         }
         if (value instanceof LocalDate) {
             LocalDate localDateValue = ((LocalDate)value);
-            String basicIsoDateString = localDateValue.format(DateTimeFormatter.ISO_LOCAL_DATE);
-            return String.format("LocalDate.parse(\"%s\")", basicIsoDateString);
+            return String.format("LocalDate.of(%d, %d, %d)",
+                                 localDateValue.getYear(),
+                                 localDateValue.getMonth().getValue(),
+                                 localDateValue.getDayOfMonth());
         }
         if (value instanceof LocalDateTime) {
             LocalDateTime localDateTimeValue = ((LocalDateTime)value);
