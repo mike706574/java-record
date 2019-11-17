@@ -2448,7 +2448,7 @@ public class Record extends LinkedHashMap<String, Object> {
             return String.format("new BigDecimal(\"%s\")", value);
         }
         if (value instanceof Integer) {
-            return String.format("new Integer(%s)", value);
+            return Integer.toString((Integer)value);
         }
         if (value instanceof Long) {
             return String.format("new Long(%s)", value);

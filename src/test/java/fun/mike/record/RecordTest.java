@@ -1122,7 +1122,7 @@ public class RecordTest {
                           "LocalDate", LocalDate.of(2025, 1, 1),
                           "LocalDateTime", LocalDateTime.parse("2025-01-01T01:00:00"));
 
-        assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", new Integer(5),\n          \"float\", 2.5f,\n          \"double\", 5.0d,\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L),\n          \"LocalDate\", LocalDate.of(2025, 1, 1),\n          \"LocalDateTime\", Instant.ofEpochMilli(1735714800000L).atZone(ZoneId.systemDefault()).toLocalDate())",
+        assertEquals("Record.of(\"str\", \"bar\",\n          \"integ\", 5,\n          \"float\", 2.5f,\n          \"double\", 5.0d,\n          \"bigdec\", new BigDecimal(\"1.0\"),\n          \"boole\", true,\n          \"long\", new Long(5),\n          \"list\", Arrays.asList(\"foo\", \"bar\"),\n          \"map\", mapOf(),\n          \"date\", new Date(1735693200000L),\n          \"LocalDate\", LocalDate.of(2025, 1, 1),\n          \"LocalDateTime\", Instant.ofEpochMilli(1735714800000L).atZone(ZoneId.systemDefault()).toLocalDate())",
                      rec.code());
     }
 
