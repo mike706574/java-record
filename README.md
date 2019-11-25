@@ -1,7 +1,7 @@
 # record
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha)
-[![Javadocs](https://www.javadoc.io/badge/fun.mike/record-alpha.svg)](https://www.javadoc.io/doc/fun.mike/record-alpha)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fun.mike/record-alpha/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fun.mike/record)
+[![Javadocs](https://www.javadoc.io/badge/fun.mike/record-alpha.svg)](https://www.javadoc.io/doc/fun.mike/record)
 
 A friendly heterogeneous map class for Java.
 
@@ -10,7 +10,7 @@ A friendly heterogeneous map class for Java.
 Import it:
 
 ```java
-import fun.mike.record.alpha;
+import fun.mike.record;
 ```
 
 Make a `Record` by passing alternating keys and values:
